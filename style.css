@@ -1,0 +1,147 @@
+/*
+Theme Name: SaltedFish
+Description: A  theme built by <a href="https://www.gzpblog.com">锅子</a>.
+Author: 锅子
+Author URI: https://www.gzpblog.com
+Version: 1.0
+Tags: bootstrap
+
+License: Attribution-ShareAlike 3.0 Unported (CC BY-SA 3.0)
+License URI: http://creativecommons.org/licenses/by-sa/3.0/
+*/
+
+@import url('public/bootstrap/css/bootstrap.min.css');
+@import url('public/font-awesome/css/font-awesome.min.css');
+
+/*
+ * 通用样式
+ */
+
+html, body, * {
+    margin:0;
+    padding:0
+}
+
+body {
+    font-family: Helvetica, 'Hiragino Sans GB', 'Microsoft Yahei', '微软雅黑', Arial, sans-serif;
+    background-color:#F8F8F8;
+    padding-top: 85px;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x:hidden; /* 对内容的左/右边缘进行裁剪 */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0
+}
+
+caption, td, th {
+    vertical-align: top;
+    text-align: left;
+    font-weight: 400
+}
+
+blockquote {
+    display: block;
+    padding: 0 0 0 10px;
+    border-left: 3px solid #00A0F4;
+    vertical-align: baseline;
+    font-style: normal;
+    font-size: 100%;
+    line-height: 22px
+}
+
+.avatar{
+    -webkit-transition:0.4s;
+    -webkit-transition:-webkit-transform 0.4s ease-out;
+    transition:transform 0.4s ease-out;
+    -moz-transition:-moz-transform 0.4s ease-out;
+}
+
+.avatar:hover{
+    transform:rotateZ(360deg);
+    -webkit-transform:rotateZ(360deg);
+    -moz-transform:rotateZ(360deg);
+}
+
+a{
+    color: #3880FF;
+}
+
+/*
+ * =====================================================================================================================
+ *  默认小屏幕
+ * =====================================================================================================================
+ */
+
+/* 顶部loading效果*/
+#web_loading{
+    top: 0;
+    z-index:999;
+    width:100%;
+}
+#web_loading div{
+    width:0;
+    height:3px;
+    background:#242321;
+}
+
+/*顶部导航*/
+.navbar{
+    height: 70px;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    margin: 0;
+}
+
+.navbar-header{
+    margin-top: 10px;
+}
+
+.navbar-header, .navbar-brand{
+    height: 60px;
+    padding: 0;
+}
+.navbar-collapse{
+    margin-top: 10px;
+}
+
+.affix{
+    -webkit-transform: translate(0, -5px);
+    -moz-transform: translate(0, -5px);
+    -ms-transform: translate(0, -5px);
+    -o-transform: translate(0, -5px);
+    transform: translate(0, -5px);
+    transition: transform 0.8s ease-in-out;
+    -webkit-transition: transform 0.8s ease-in-out;
+    -moz-transition: transform 0.8s ease-in-out;
+    -o-transition: transform 0.8s ease-in-out;
+}
+.affix-top{
+    transition: transform 0.6s ease-in-out;
+    -webkit-transition: transform 0.6s ease-in-out;
+    -moz-transition: transform 0.6s ease-in-out;
+    -o-transition: transform 0.6s ease-in-out;
+}
+/*
+ * =====================================================================================================================
+ *  中等屏幕
+ * =====================================================================================================================
+ */
+@media (min-width: 768px) {
+
+}
+
+/*
+ * =====================================================================================================================
+ *  PC大屏幕
+ * =====================================================================================================================
+ */
+@media (min-width:  1200px) {
+    .body-container{
+        width: 1200px;
+    }
+}
