@@ -21,20 +21,19 @@
     <?php wp_head(); ?>
 </head>
 
-<body>
+<body data-spy="scroll" data-target="#topNav">
 
-    <nav class="navbar navbar-default navbar-fixed-top clearfix" data-spy="affix" data-offset-top="100">
-    <div id="web_loading"><div></div></div>
+    <nav class="navbar navbar-fixed-top clearfix" id="topNav" data-spy="affix" data-offset-top="100">
     <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
+        <div class="navbar-header navbar-inverse">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="<?php bloginfo( 'url' ); ?>" target="_blank">
+            <a class="navbar-brand" href="<?php bloginfo( 'url' ); ?>">
                 <img src="<?php echo sf_image('logo.png'); ?>" alt="<?php bloginfo( 'name' ); ?>" height="60px">
             </a>
         </div>
@@ -66,7 +65,7 @@
             <!-- 导航右部分-搜索框 start -->
             <ul class="nav navbar-right">
                 <li id="navbar-search">
-                    <form method="GET" class="navbar-form navbar-right" role="search"  action="<?php bloginfo( 'home' ); ?>/">
+                    <form method="GET" class="navbar-form" role="search"  action="<?php bloginfo( 'home' ); ?>/">
                         <div class="input-group">
                             <input type="text" name="s" id="jp-search" class="form-control" placeholder="搜索关键字" maxlength="100">
                             <span class="input-group-btn">

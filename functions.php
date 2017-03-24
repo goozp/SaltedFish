@@ -30,6 +30,13 @@ function sf_scripts_with_jquery()
 {
     //main css
     wp_enqueue_style( 'style', get_bloginfo( 'stylesheet_url' ), $deps = array(), SF_VERSION  );
+    // 导航菜单 css
+    wp_register_style( 'navi', get_template_directory_uri() . '/public/css/bootstrap-off-canvas-nav.css' );
+    wp_enqueue_style( 'navi' );
+    //顶部loading css
+    wp_register_style( 'pace', get_template_directory_uri() . '/public/css/pace-theme-flash.css' );
+    wp_enqueue_style( 'pace' );
+
 
     //JQuery js
     wp_deregister_script( 'jquery' );
@@ -38,12 +45,10 @@ function sf_scripts_with_jquery()
     // bootstrap js
     wp_register_script( 'custom-script', get_template_directory_uri() . '/public/bootstrap/js/bootstrap.min.js', array( 'jquery' ), '3.3.7' );
     wp_enqueue_script( 'custom-script' );
-    // 导航菜单
-    wp_register_style( 'navi', get_template_directory_uri() . '/public/css/bootstrap-off-canvas-nav.css' );
-    wp_enqueue_style( 'navi' );
+    // 导航菜单 js
     wp_enqueue_script( 'nav_js', sf_script( 'bootstrap-off-canvas-nav.js' ), null, SF_VERSION, false );
-    //main js
-    wp_enqueue_script( 'main_js', sf_script( 'main.js' ), null, SF_VERSION, false );
+    //顶部loading js
+    wp_enqueue_script( 'pace_js', sf_script( 'pace.min.js' ), null, SF_VERSION, false );
 
 }
 add_action( 'wp_enqueue_scripts', 'sf_scripts_with_jquery' );

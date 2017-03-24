@@ -24,7 +24,7 @@ html, body, * {
 
 body {
     font-family: Helvetica, 'Hiragino Sans GB', 'Microsoft Yahei', '微软雅黑', Arial, sans-serif;
-    background-color:#F8F8F8;
+    background-color: #ecf0f1;
     padding-top: 85px;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
@@ -66,9 +66,6 @@ blockquote {
     -moz-transform:rotateZ(360deg);
 }
 
-a{
-    color: #3880FF;
-}
 
 /*
  * =====================================================================================================================
@@ -90,25 +87,53 @@ a{
 
 /*顶部导航*/
 .navbar{
+    background-color: #1C1F20;
+    -moz-box-shadow:3px 3px 4px #bdc3c7;
+    -webkit-box-shadow:3px 3px 4px #bdc3c7;
+    box-shadow:1px 1px 2px #bdc3c7;
+    filter:progid:DXImageTransform.Microsoft.Shadow(Strength=2,Direction=100,Color='#000000');
     height: 70px;
     left: 0;
     right: 0;
     z-index: 999;
     margin: 0;
 }
-
-.navbar-header{
-    margin-top: 10px;
+#navbar, .navbar-header{
+    margin: 0;
 }
-
-.navbar-header, .navbar-brand{
-    height: 60px;
+.navbar a{
+    height: 70px;
+    background-color: #1C1F20;
+    color: #B4C8CE;
+    margin: 0;
     padding: 0;
 }
-.navbar-collapse{
-    margin-top: 10px;
+.navbar ul li a{
+    height: 70px;
+    padding-top: 25px;
 }
-
+.navbar ul li a:hover, .navbar-brand:hover{
+    color: #27ae60;
+    background: -webkit-linear-gradient(#1C1F20, #26424B); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(#1C1F20, #26424B); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(#1C1F20, #26424B); /* Firefox 3.6 - 15 */
+    background: linear-gradient(#1C1F20, #25424C); /* 标准的语法 */
+}
+.navbar-header, .navbar-brand{
+    height: 70px;
+}
+.navbar-header a{
+    height: 70px;
+    padding-top: 5px;
+}
+.navbar-right{
+    height: 70px;
+    padding-top: 10px;
+}
+.navbar-toggle{
+    margin-top: 20px;
+    margin-right: 10px;
+}
 .affix{
     -webkit-transform: translate(0, -5px);
     -moz-transform: translate(0, -5px);
