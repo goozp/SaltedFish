@@ -63,7 +63,7 @@
             wp_nav_menu($args); ?>
 
             <!-- 导航右部分-搜索框 start -->
-            <ul class="nav navbar-right">
+            <ul class="nav navbar-right hidden-sm">
                 <li id="navbar-search">
                     <form method="GET" class="navbar-form" role="search"  action="<?php bloginfo( 'home' ); ?>/">
                         <div class="input-group">

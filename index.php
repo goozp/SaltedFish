@@ -1,22 +1,25 @@
 <?php get_header(); ?>
 
     <div class="container body-container">
-        <!-- 左侧边栏 -->
-        <div class="col-xs-12 col-sm-3">
-            <div class="row">
-                <div class="col-sm-12" style="background-color: red; height: 300px">
-                    123
-                </div>
-                <div class="col-sm-12" style="background-color: red; height: 300px">
-                    123
-                </div>
-            </div>
-        </div>
+        <!-- 左主体 -->
+        <div class="col-xs-12 col-sm-9 left-body" >
+                <div class="col-xs-12 col-sm-3 index-subject">
+                    <div class="col-xs-12 col-sm-12 index-subject-block index-subject-block-1">
+                        <div class="subject-tag subject-tag-1">
+                            <span>专题</span>
+                        </div>
+                        <span class="subject-words">建站技术</span>
+                    </div>
 
-        <!-- 中间出栏 -->
-        <div class="col-xs-12 col-sm-9" >
-            <div class="row">
-                <div class="col-sm-9">
+                    <div class="col-xs-12 col-sm-12 index-subject-block index-subject-block-2">
+                        <div class="subject-tag subject-tag-2">
+                            <span>专题</span>
+                        </div>
+                        <span class="subject-words">编程学习</span>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-sm-9 index-carousel">
                     <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
                         <!-- Indicators -->
                         <ol class="carousel-indicators">
@@ -66,40 +69,13 @@
                         </a>
                     </div>
                 </div>
-                <!-- 右侧边栏 -->
-                <div class="col-xs-12 col-sm-3">
-                    <div class="row">
-                        <div class="col-sm-12" style="background-color: green; height: 300px">
-                            123
-                            
-                        </div>
-
-                        <div class="col-sm-12" style="background-color: green; height: 300px">
-                            123
-                        </div>
-                        <div class="col-sm-12" style="background-color: green; height: 300px">
-                            123
-                        </div>
-
-                        <div class="col-sm-12" style="background-color: green; height: 300px">
-                            123
-                        </div>
-
-                        <div class="col-sm-12" style="background-color: green; height: 300px">
-                            123
-                        </div>
-
-                        <div class="col-sm-12" style="background-color: green; height: 300px">
-                            123
-                        </div>
-
-                        <div class="col-sm-12" style="background-color: green; height: 300px">
-                            123
-                        </div>
 
 
-                    </div>
-                </div>
+        </div>
+
+        <!-- 右侧栏 -->
+        <div class="col-xs-12 col-sm-3 right-sidebar">
+            <div class="col-xs-12 col-sm-12 author-info-widget">
 
             </div>
         </div>

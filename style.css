@@ -90,7 +90,7 @@ blockquote {
     background-color: #1C1F20;
     -moz-box-shadow:3px 3px 4px #bdc3c7;
     -webkit-box-shadow:3px 3px 4px #bdc3c7;
-    box-shadow:1px 1px 2px #bdc3c7;
+    box-shadow:1px 1px 2px #dddddd;
     filter:progid:DXImageTransform.Microsoft.Shadow(Strength=2,Direction=100,Color='#000000');
     height: 70px;
     left: 0;
@@ -134,6 +134,9 @@ blockquote {
     margin-top: 20px;
     margin-right: 10px;
 }
+.navbar-search{
+
+}
 .affix{
     -webkit-transform: translate(0, -5px);
     -moz-transform: translate(0, -5px);
@@ -151,13 +154,90 @@ blockquote {
     -moz-transition: transform 0.6s ease-in-out;
     -o-transition: transform 0.6s ease-in-out;
 }
+
+/* 左主体 */
+.left-body{
+    padding: 0;
+}
+.index-carousel{
+    padding: 0 7px;
+}
+
+.index-subject{
+    height: 200px;
+    padding: 0 7px;
+    margin-bottom: 15px;
+}
+
+.index-subject-block{
+    width: 100%;
+    height: 48%;
+    background-color: #27ae60;
+    padding: 0;
+    margin-bottom: 10px;
+}
+.subject-words{
+    color: #ffffff;
+    font-size: 24px;
+}
+
+.subject-tag{
+    width: 65px;
+    height: 22px;
+}
+.subject-tag span{
+    color: #ffffff;
+    line-height: 22px;
+    font-size: 14px;
+    margin-left: 10px;
+}
+.subject-tag-1{
+    background:url("public/images/tags1.png") no-repeat;
+}
+.subject-tag-2{
+    background:url("public/images/tags2.png") no-repeat;
+}
+.index-subject-block-1{
+
+}
+.index-subject-block-2{
+
+}
+
+/* 右侧栏 */
+.right-sidebar{
+    padding: 0 7px;
+}
+.author-info-widget{
+    background-color: #ffffff;
+    box-shadow:0 0 5px #dddddd;
+    border: 1px solid #dddddd;
+    border-radius: 5px;
+
+    padding: 0;
+    height: 450px;
+}
+
+/*
+ * =====================================================================================================================
+ *  小屏幕
+ * =====================================================================================================================
+ */
+@media (min-width: 768px) {
+    .index-subject{
+        height: 227px
+    }
+}
+
 /*
  * =====================================================================================================================
  *  中等屏幕
  * =====================================================================================================================
  */
-@media (min-width: 768px) {
-
+@media (min-width: 992px) {
+    .index-subject{
+        height: 296px
+    }
 }
 
 /*
@@ -166,7 +246,7 @@ blockquote {
  * =====================================================================================================================
  */
 @media (min-width:  1200px) {
-    .body-container{
-        width: 1200px;
+    .index-subject{
+        height: 360px
     }
 }
