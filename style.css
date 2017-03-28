@@ -198,10 +198,18 @@ blockquote {
     background:url("public/images/tags2.png") no-repeat;
 }
 .index-subject-block-1{
-
+    background:url("public/images/tag1_s.jpg") no-repeat;
+    -moz-background-size:100% 100%;
+    -webkit-background-size:100% 100%;
+    -o-background-size:100% 100%;
+    background-size:100% 100%;
 }
 .index-subject-block-2{
-
+    background:url("public/images/tag2_s.jpg") no-repeat;
+    -moz-background-size:100% 100%;
+    -webkit-background-size:100% 100%;
+    -o-background-size:100% 100%;
+    background-size:100% 100%;
 }
 
 /* 右侧栏 */
@@ -226,6 +234,21 @@ blockquote {
 @media (min-width: 768px) {
     .index-subject{
         height: 227px
+    }
+    .index-subject-block-1{
+        background:url("public/images/tag1_b.jpg") no-repeat;
+        -moz-background-size:contain;
+        -webkit-background-size:contain;
+        -o-background-size:contain;
+        background-size:contain;
+    }
+    .index-subject-block-2{
+        background:url("public/images/tag2_b.jpg") no-repeat;
+        -moz-background-size:contain;
+        -webkit-background-size:contain;
+        -o-background-size:contain;
+        background-size:contain;
+
     }
 }
 

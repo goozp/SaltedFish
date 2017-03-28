@@ -8,14 +8,14 @@
                         <div class="subject-tag subject-tag-1">
                             <span>专题</span>
                         </div>
-                        <span class="subject-words">建站技术</span>
+                        <span class="subject-words"></span>
                     </div>
 
                     <div class="col-xs-12 col-sm-12 index-subject-block index-subject-block-2">
                         <div class="subject-tag subject-tag-2">
                             <span>专题</span>
                         </div>
-                        <span class="subject-words">编程学习</span>
+                        <span class="subject-words"></span>
                     </div>
                 </div>
 
