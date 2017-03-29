@@ -73,12 +73,8 @@
 
         </div>
 
-        <!-- 右侧栏 -->
-        <div class="col-xs-12 col-sm-3 right-sidebar">
-            <div class="col-xs-12 col-sm-12 author-info-widget">
-
-            </div>
-        </div>
+        <!-- 侧栏 -->
+        <?php get_sidebar(); ?>
     </div>
 
 <?php get_footer(); ?>

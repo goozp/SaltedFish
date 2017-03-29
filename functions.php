@@ -61,6 +61,17 @@ register_nav_menus( array(
     'header_menu' => '顶部导航菜单', //注册顶部导航菜单key为header_menu; 在顶部导航处调用该key,如果用户选择了就能正常显示
 ) );
 
+/** 侧边栏组件widgets注册(使主题支持侧边栏) */
+if( function_exists('register_sidebar') ) {
+    register_sidebar(array(
+        'name' => 'SaltedFish-sidebar',
+        'before_widget' => '',
+        'after_widget' => '',
+        'before_title' => '<h4>',
+        'after_title' => '</h4>'
+    ));
+}
+
 add_action('get_header', 'remove_admin_login_header');
 function remove_admin_login_header() {
     remove_action('wp_head','_admin_bar_bump_cb');

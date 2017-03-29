@@ -160,7 +160,7 @@ blockquote {
     padding: 0;
 }
 .index-carousel{
-    padding: 0 7px;
+    padding: 0 7px 10px 7px;
 }
 
 .index-subject{
@@ -218,12 +218,94 @@ blockquote {
 }
 .author-info-widget{
     background-color: #ffffff;
+    background: -webkit-linear-gradient(#D6E7E7, #ffffff); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(#D6E7E7, #ffffff); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(#D6E7E7, #ffffff); /* Firefox 3.6 - 15 */
+    background: linear-gradient(#D6E7E7, #ecf0f1); /* 标准的语法 */
     box-shadow:0 0 5px #dddddd;
     border: 1px solid #dddddd;
     border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+.author-info-widget-img{
+    height: 140px;
+    padding: 10px 0;
+}
+.author-info-widget-intro a{
+    margin: 3px;
+}
+.author-info-widget-intro h4{
+    color: #34495e;
+    font-weight: 600;
+}
+.author-info-widget-words{
+    height: 50px;
+    position: relative;
+}
+.author-info-widget-words-main{
+    color: #34495e;
+    padding: 8px 22px;
+}
+.author-info-widget-words-left{
+    position: absolute;
+    left:0;
+    top: 5px;
+    width: 11px;
+    height: 11px;
+    background: url("public/images/left-quotation.png") no-repeat;
+    background-size: 11px 11px;
+}
+.author-info-widget-words-right{
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
+    width: 11px;
+    height: 11px;
+    background: url("public/images/right-quotation.png") no-repeat;
+    background-size: 11px 11px;
+}
+.author-info-widget-marker{
+    position: absolute;
+    top: 5px;
+    right: 2px;
+    width: 100px;
+    height: 70px;
+    background: url("public/images/hello.png") no-repeat;
+    background-size: 80px 50px;
+}
+.i_weibo{
+    color: #E6162D;
+}
+.i_github{
+    color: #191717;
+}
+.i_facebook{
+    color: #4862A3;
+}
 
-    padding: 0;
-    height: 450px;
+.widget{
+    box-shadow:0 0 5px #dddddd;
+    border: 1px solid #dddddd;
+    border-radius: 5px;
+    background: #ecf0f1;
+}
+.widget ul{
+    color: #34495e;
+    margin-left: 25px;
+}
+.widget h4{
+    text-align: center;
+    color: #4CA65C;
+}
+.widget a{
+    color: #000000;
+}
+.widget a:hover{
+    color: #00ad35;
+}
+.widget-news{
+
 }
 
 /*
@@ -248,7 +330,10 @@ blockquote {
         -webkit-background-size:contain;
         -o-background-size:contain;
         background-size:contain;
-
+    }
+    .author-info-widget-words{
+        height: 80px;
+        position: relative;
     }
 }
 
@@ -261,6 +346,10 @@ blockquote {
     .index-subject{
         height: 296px
     }
+    .author-info-widget-words{
+        height: 60px;
+        position: relative;
+    }
 }
 
 /*
@@ -271,5 +360,9 @@ blockquote {
 @media (min-width:  1200px) {
     .index-subject{
         height: 360px
+    }
+    .author-info-widget-words{
+        height: 50px;
+        position: relative;
     }
 }
