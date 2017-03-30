@@ -143,7 +143,6 @@ function sf_style( $style_name ) {
     return $style_url;
 }
 
-
 /**
  * 主题javascript文件url
  * @param string $script_name
