@@ -19,7 +19,7 @@ add_action( 'admin_bar_menu', 'sf_toolbar_link', 999 );
 function sf_toolbar_link( $wp_admin_bar ) {
     $args = array(
         'title' => 'SaltedFish 主题设置',
-        'href'  => admin_url( 'admin.php?page=SaltedFish_basic_setting' ),
+        'href'  => admin_url( 'admin.php?page=SaltedFish_setting_detail' ),
         'meta'  => array(
             'title' => 'SaltedFish 主题设置'
         )

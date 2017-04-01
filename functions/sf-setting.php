@@ -1,15 +1,16 @@
 <?php
 /**
- * @name theme-setting
+ * @name theme setting
  * @description 主题配置
  * @version     1.0.0
  * @author      锅子 (http://www.gzpblog.com)
- * @package     SaltedFish
+ * @package     Jumping
  **/
 class SaltedFish_setting {
     private $defaultsBasic;
     private $defaultsTheme;
     private $defaultsContent;
+    private $defaultsOthers;
 
     public function __construct() {
         $this->defaultsBasic = array(
@@ -110,39 +111,60 @@ class SaltedFish_setting {
             ),
         );
 
+        $this->defaultsOthers = array(
+
+        );
+
         // Add theme setting menu and page
         add_action( 'admin_menu', array( $this, 'menu' ) );
     }
+
     public function menu() {
-        add_menu_page( SF_NAME, SF_NAME, '', 'SaltedFish_setting', array(
+        add_menu_page( SF_NAME, SF_NAME, 'manage_options', 'SaltedFish_setting', array(
             $this,
-            'basic_setting'
+            'intro'
         ), sf_image( 'saltedfish-logo.png' ), 100 );
 
-        add_submenu_page( 'SaltedFish_setting', SF_NAME . ' 基本设置', '基本设置', 'edit_themes', 'SaltedFish_basic_setting', array(
+        add_submenu_page( 'SaltedFish_setting', SF_NAME . ' 介绍', SF_NAME, 'edit_themes', 'SaltedFish_setting', array(
             $this,
-            'basic_setting'
+            'intro'
         ) );
-        add_submenu_page( 'SaltedFish_setting', SF_NAME . ' 主题设置', '主题设置', 'edit_themes', 'SaltedFish_theme_setting', array(
+        add_submenu_page( 'SaltedFish_setting', SF_NAME . ' 选项设置', '选项设置', 'edit_themes', 'SaltedFish_setting_detail', array(
             $this,
-            'theme_setting'
+            'setting'
         ) );
-        add_submenu_page( 'SaltedFish_setting', SF_NAME . ' 内容设置', '内容设置', 'edit_themes', 'SaltedFish_content_setting', array(
+        add_submenu_page( 'SaltedFish_setting', SF_NAME . ' 主题说明', '主题说明', 'edit_themes', 'SaltedFish_help', array(
             $this,
-            'content_setting'
-        ) );
-        add_submenu_page( 'SaltedFish_setting', SF_NAME . ' 说明', '说明', 'edit_themes', 'SaltedFish_help', array(
-            $this,
-            'help_desc'
+            'desc'
         ) );
 
         add_action( 'admin_init', array( $this, 'settings_group' ) );
     }
 
-    /**
-     * 基础设置
-     */
-    public function basic_setting(){
+    public function intro(){
+        wp_enqueue_style( 'SaltedFish-help', sf_style( 'setting-help.css' ) );
+        ?>
+
+        <div class="sf-intro">
+            <h1><img src="<?php echo sf_image('saltedfish-logo2.png') ?>" height="18px"/>&nbsp;<?php echo SF_NAME; ?></h1>
+            <div class="intro-header">
+                <h3>什么是SaltedFish?</h3>
+                SaltedFish是一款基于bootstrap的Wordpress主题，更确切地说是一款博客主题。是 <a href="https://www.gzpblog.com">锅子</a>
+                空闲时间为自己的博客量身定制的一款主题。当然，如果你喜欢这套主题的样式，非常欢迎使用，也很欢迎大家添砖加瓦。
+            </div>
+            <div >
+                <h3>SaltedFish的理念</h3>
+                制作SaltedFish前，作者的需求是：所见即所得。之前一直崇尚简洁，因为一个个人博客，而且偏向于技术类的话，文章的展示是首要的，太花哨不好。
+                而之前制作的主题在使用中有一个很明显的问题，当有时候想要来查一篇曾经发表的笔记时，没有一个快速的入口，需要去把它翻出来，这个体验非常不好。
+                因为本人使用博客，与一些追求流量的自媒体不同，首先是为自己服务，比如记录笔记，分享技术，找到志同道合的道友等。所以SaltedFish的理念，就是
+                首页的所见即所得，需要什么，快速找到，打通一切入口。
+            </div>
+        </div>
+        <?php
+    }
+
+    public function setting() {
+        wp_enqueue_style( 'sf-help', sf_style('setting-main.css' ) );
         if ( isset( $_REQUEST['settings-updated'] ) ) { ?>
             <div id="message" class="updated fade">
                 <p><strong>主题设置已保存.</strong></p>
@@ -152,147 +174,148 @@ class SaltedFish_setting {
 
         ?>
 
-        <div class="wrap">
-            <h2>基本设置</h2>
-
+        <div class="htmleaf-container">
             <form method="post" action="options.php">
-                <?php settings_fields( 'SaltedFish-settings-group-basic' ); ?>
-                <table class="form-table">
-                    <tbody>
-                    <?php
-                    foreach ( $this->defaultsBasic as $key => $arr ) {
-                        ?>
-                        <tr valign="top">
-                            <th scope="row">
-                                <label><?php echo $arr['title']; ?></label>
-                            </th>
-                            <td>
-                                <p>
-                                    <?php $this->build( $arr ); ?>
-                                </p>
+                <?php settings_fields( 'SaltedFish-settings-group' ); ?>
+                <div class="tabs">
+                    <div class="tabs-header">
+                        SaltedFish设置
+                    </div>
+                    <input type="radio" id="tab1" name="tab-control" checked>
+                    <input type="radio" id="tab2" name="tab-control">
+                    <input type="radio" id="tab3" name="tab-control">
+                    <input type="radio" id="tab4" name="tab-control">
+                    <ul>
+                        <li title="basic-setting"><label for="tab1" role="button"><br><span>基本设置</span></label></li>
+                        <li title="theme-setting"><label for="tab2" role="button"><br><span>主题设置</span></label></li>
+                        <li title="content-setting"><label for="tab3" role="button"><br><span>内容设置</span></label></li>
+                        <li title="others-setting"><label for="tab4" role="button"><br><span>其它设置</span></label></li>
+                    </ul>
+
+                    <div class="slider"><div class="indicator"></div></div>
+
+                    <div class="content">
+                        <section>
+                            <h2>basic-setting</h2>
+                            <table class="form-table">
+                                <tbody>
                                 <?php
-                                if ( $arr['label'] ) {
-                                    printf( '<p class="description">%s</p>', $arr['label'] );
-                                }
+                                foreach ( $this->defaultsBasic as $key => $arr ) {
+                                    ?>
+                                    <tr valign="top">
+                                        <th scope="row">
+                                            <label><?php echo $arr['title']; ?></label>
+                                        </th>
+                                        <td>
+                                            <p>
+                                                <?php $this->build( $arr ); ?>
+                                            </p>
+                                            <?php
+                                            if ( $arr['label'] ) {
+                                                printf( '<p class="description">%s</p>', $arr['label'] );
+                                            }
+                                            ?>
+                                        </td>
+                                    </tr>
+                                <?php }
                                 ?>
-                            </td>
-                        </tr>
-                    <?php }
-                    ?>
-                    </tbody>
-                </table>
-                <input type="submit" class="button-primary" value="保存更改"/>
+                                </tbody>
+                            </table>
+                        </section>
+                        <section>
+                            <h2>theme-setting</h2>
+                            <table class="form-table">
+                                <tbody>
+                                <?php
+                                foreach ( $this->defaultsTheme as $key => $arr ) {
+                                    ?>
+                                    <tr valign="top">
+                                        <th scope="row">
+                                            <label><?php echo $arr['title']; ?></label>
+                                        </th>
+                                        <td>
+                                            <p>
+                                                <?php $this->build( $arr ); ?>
+                                            </p>
+                                            <?php
+                                            if ( $arr['label'] ) {
+                                                printf( '<p class="description">%s</p>', $arr['label'] );
+                                            }
+                                            ?>
+                                        </td>
+                                    </tr>
+                                <?php }
+                                ?>
+                                </tbody>
+                            </table>
+                        </section>
+                        <section>
+                            <h2>content-setting</h2>
+                            <table class="form-table">
+                                <tbody>
+                                <?php
+                                foreach ( $this->defaultsContent as $key => $arr ) {
+                                    ?>
+                                    <tr valign="top">
+                                        <th scope="row">
+                                            <label><?php echo $arr['title']; ?></label>
+                                        </th>
+                                        <td>
+                                            <p>
+                                                <?php $this->build( $arr ); ?>
+                                            </p>
+                                            <?php
+                                            if ( $arr['label'] ) {
+                                                printf( '<p class="description">%s</p>', $arr['label'] );
+                                            }
+                                            ?>
+                                        </td>
+                                    </tr>
+                                <?php }
+                                ?>
+                                </tbody>
+                            </table>
+                        </section><section>
+                            <h2>others</h2>
+                            <table class="form-table">
+                                <tbody>
+                                <?php
+                                foreach ( $this->defaultsOthers as $key => $arr ) {
+                                    ?>
+                                    <tr valign="top">
+                                        <th scope="row">
+                                            <label><?php echo $arr['title']; ?></label>
+                                        </th>
+                                        <td>
+                                            <p>
+                                                <?php $this->build( $arr ); ?>
+                                            </p>
+                                            <?php
+                                            if ( $arr['label'] ) {
+                                                printf( '<p class="description">%s</p>', $arr['label'] );
+                                            }
+                                            ?>
+                                        </td>
+                                    </tr>
+                                <?php }
+                                ?>
+                                </tbody>
+                            </table>
+                        </section>
+                    </div>
+                    <hr>
+                    <input type="submit" id="tab-submit" class="button-primary" value="全部保存"/>
+                </div>
             </form>
         </div>
 
         <?php
     }
 
-    /**
-     * 主题设置
-     */
-    public function theme_setting(){
-        if ( isset( $_REQUEST['settings-updated'] ) ) { ?>
-            <div id="message" class="updated fade">
-                <p><strong>主题设置已保存.</strong></p>
-            </div>
-            <?php
-        }
-
+    public function desc() {
+        wp_enqueue_style( 'SaltedFish-help', sf_style( 'setting-help.css' ) );
         ?>
-
-        <div class="wrap">
-            <h2>主题设置</h2>
-
-            <form method="post" action="options.php">
-                <?php settings_fields( 'SaltedFish-settings-group-theme' ); ?>
-                <table class="form-table">
-                    <tbody>
-                    <?php
-                    foreach ( $this->defaultsTheme as $key => $arr ) {
-                        ?>
-                        <tr valign="top">
-                            <th scope="row">
-                                <label><?php echo $arr['title']; ?></label>
-                            </th>
-                            <td>
-                                <p>
-                                    <?php $this->build( $arr ); ?>
-                                </p>
-                                <?php
-                                if ( $arr['label'] ) {
-                                    printf( '<p class="description">%s</p>', $arr['label'] );
-                                }
-                                ?>
-                            </td>
-                        </tr>
-                    <?php }
-                    ?>
-                    </tbody>
-                </table>
-                <input type="submit" class="button-primary" value="保存更改"/>
-            </form>
-        </div>
-
-        <?php
-    }
-
-    /**
-     * 内容设置
-     */
-    public function content_setting(){
-        if ( isset( $_REQUEST['settings-updated'] ) ) { ?>
-            <div id="message" class="updated fade">
-                <p><strong>主题设置已保存.</strong></p>
-            </div>
-            <?php
-        }
-
-        ?>
-
-        <div class="wrap">
-            <h2>内容设置</h2>
-
-            <form method="post" action="options.php">
-                <?php settings_fields( 'SaltedFish-settings-group-content' ); ?>
-                <table class="form-table">
-                    <tbody>
-                    <?php
-                    foreach ( $this->defaultsContent as $key => $arr ) {
-                        ?>
-                        <tr valign="top">
-                            <th scope="row">
-                                <label><?php echo $arr['title']; ?></label>
-                            </th>
-                            <td>
-                                <p>
-                                    <?php $this->build( $arr ); ?>
-                                </p>
-                                <?php
-                                if ( $arr['label'] ) {
-                                    printf( '<p class="description">%s</p>', $arr['label'] );
-                                }
-                                ?>
-                            </td>
-                        </tr>
-                    <?php }
-                    ?>
-                    </tbody>
-                </table>
-                <input type="submit" class="button-primary" value="保存更改"/>
-            </form>
-        </div>
-
-        <?php
-    }
-
-    /**
-     * 说明页
-     */
-    public function help_desc(){
-        wp_enqueue_style( 'sf-help', sf_style('setting-help.css' ) );
-        ?>
-        <div class="wrap">
+        <div class="sf-desc">
             <h1>欢迎使用<?php echo SF_NAME; ?>主题</h1>
 
             <div class="help-title">
@@ -316,6 +339,11 @@ class SaltedFish_setting {
                     <li>
                         小图标：采用<a href="http://fontawesome.dashgame.com/" target="_blank">Font Awesome v4.7.0</a>，具体图标对应class请前往官网查看。
                     </li>
+                </ul>
+            </div>
+            <div class="theme-inside">
+                <h3>已内置功能（无需插件）</h3>
+                <ul>
                     <li>
                         发送邮件：评论回复邮件提醒功能采用了PHPMailer，发送邮件的设置可在主题设置中进行设置。
                     </li>
@@ -342,10 +370,9 @@ class SaltedFish_setting {
     }
 
     public function settings_group() {
-        register_setting( 'SaltedFish-settings-group-basic', SF_NAME . '_settings_basic' );
-        register_setting( 'SaltedFish-settings-group-theme', SF_NAME . '_settings_theme' );
-        register_setting( 'SaltedFish-settings-group-content', SF_NAME . '_settings_content' );
+        register_setting( 'SaltedFish-settings-group', SF_NAME . '_settings' );
     }
+
 
     private function build( $obj ) {
         switch ( $obj['type'] ) {
@@ -396,7 +423,7 @@ class SaltedFish_setting {
 
         foreach ( $value as $_key => $_val ) { ?>
             <label>
-                <input class="sf-<?php echo $_key; ?>" type="radio"
+                <input class="SaltedFish-<?php echo $_key; ?>" type="radio"
                        name="<?php echo SF_NAME . '_settings[' . $key . ']'; ?>"
                        value="<?php echo $_key; ?>" <?php if ( $_key == $real_val ) {
                     echo 'checked="checked"';
