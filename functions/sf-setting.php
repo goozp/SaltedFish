@@ -63,14 +63,6 @@ class SaltedFish_setting {
 
         $this->defaultsTheme = array(
             array(
-                'title' => '首页、分类内容',
-                'key'   => 'full-content',
-                'type'  => 'checkbox',
-                'value' => 1,
-                'text'  => '显示全文',
-                'label' => '默认首页和分类页文章只显示摘要，勾选开启显示全文后将全文显示。'
-            ),
-            array(
                 'title' => '缩略图',
                 'key'   => 'thumbnail',
                 'type'  => 'checkbox',

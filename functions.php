@@ -49,6 +49,8 @@ function sf_scripts_with_jquery()
     wp_enqueue_script( 'nav_js', sf_script( 'bootstrap-off-canvas-nav.js' ), null, SF_VERSION, false );
     //顶部loading js
     wp_enqueue_script( 'pace_js', sf_script( 'pace.min.js' ), null, SF_VERSION, false );
+    //主题js
+    wp_enqueue_script( 'main_js', sf_script( 'main.js' ), null, SF_VERSION, false );
 
 }
 add_action( 'wp_enqueue_scripts', 'sf_scripts_with_jquery' );

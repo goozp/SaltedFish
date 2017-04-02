@@ -21,9 +21,9 @@
     <?php wp_head(); ?>
 </head>
 
-<body data-spy="scroll" data-target="#topNav">
+<body>
 
-    <nav class="navbar navbar-fixed-top clearfix" id="topNav" data-spy="affix" data-offset-top="100">
+    <nav class="navbar navbar-fixed-top clearfix" id="topNav">
     <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header navbar-inverse">
@@ -34,7 +34,7 @@
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="<?php bloginfo( 'url' ); ?>">
-                <img src="<?php echo sf_image('logo.png'); ?>" alt="<?php bloginfo( 'name' ); ?>" height="60px">
+                <img src="<?php echo sf_image('logo.png'); ?>" alt="<?php bloginfo( 'name' ); ?>">
             </a>
         </div>
 
