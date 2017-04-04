@@ -37,18 +37,19 @@ function sf_scripts_with_jquery()
     wp_register_style( 'pace', get_template_directory_uri() . '/public/css/pace-theme-flash.css' );
     wp_enqueue_style( 'pace' );
 
-
     //JQuery js
     wp_deregister_script( 'jquery' );
     wp_register_script( 'jquery', sf_script( 'jquery.min.js' ), false, '1.11.3' );
     wp_enqueue_script( 'jquery', false, false, '1.11.3' );
+    //顶部loading js
+    wp_enqueue_script( 'pace_js', sf_script( 'pace.min.js' ), null, SF_VERSION, true );
     // bootstrap js
     wp_register_script( 'custom-script', get_template_directory_uri() . '/public/bootstrap/js/bootstrap.min.js', array( 'jquery' ), '3.3.7' );
     wp_enqueue_script( 'custom-script' );
     // 导航菜单 js
     wp_enqueue_script( 'nav_js', sf_script( 'bootstrap-off-canvas-nav.js' ), null, SF_VERSION, false );
-    //顶部loading js
-    wp_enqueue_script( 'pace_js', sf_script( 'pace.min.js' ), null, SF_VERSION, false );
+    //lazyload.js
+    wp_enqueue_script( 'lazyload', sf_script( 'jquery.lazyload.min.js' ), null, '1.9.7', false );
     //主题js
     wp_enqueue_script( 'main_js', sf_script( 'main.js' ), null, SF_VERSION, false );
 
@@ -81,13 +82,6 @@ function jp_google_fonts( $translations, $text, $context, $domain ) {
     }
     return $translations;
 }
-/**
- * 移除wordpress顶部工具栏css样式
- */
-add_action('get_header', 'remove_admin_login_header');
-function remove_admin_login_header() {
-    remove_action('wp_head','_admin_bar_bump_cb');
-}
 
 /* 修改Gravatar服务器为cn.gravatar.com */
 function mytheme_get_avatar( $avatar ) {
@@ -101,6 +95,7 @@ add_filter( 'get_avatar', 'mytheme_get_avatar' );
  */
 register_nav_menus( array(
     'header_menu' => '顶部导航菜单', //注册顶部导航菜单key为header_menu; 在顶部导航处调用该key,如果用户选择了就能正常显示
+    'sidebar_menu' => '侧栏标签化菜单'
 ) );
 
 /**

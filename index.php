@@ -2,7 +2,7 @@
 
     <div class="container body-container">
         <!-- 左主体 -->
-        <div class="col-xs-12 col-sm-9 left-body" >
+        <div class="col-xs-12 col-lg-9 left-body" >
             <!-- 专题 -->
             <div class="col-xs-12 col-sm-3 index-subject">
                 <div class="col-xs-12 col-sm-12 index-subject-block index-subject-block-1">
@@ -53,7 +53,7 @@
                     </div>
                     <script>
                         $('.carousel').carousel({
-                            interval: 3000
+                            interval: 2000
                         });
                     </script>
                     <!-- Controls -->
@@ -86,13 +86,13 @@
                                 <div class="col-xs-12 col-sm-12 col-lg-12 post_body">
                                     <?php
                                         if ( $post_thumbnail["exist"] ) : ?>
-                                            <div class="col-xs-12 col-sm-3 col-lg-3 post-thumbnail">
+                                            <div class="col-xs-12 col-sm-4 col-md-3 post-thumbnail">
                                                 <div class="ih-item square effect6 from_top_and_bottom">
                                                     <a href="<?php the_permalink() ?>" rel="bookmark">
                                                         <div class="img">
-                                                            <img class="lazy" src="<?php echo sf_thumbnail_url($post_thumbnail); ?>"
-                                                                 data-original="<?php echo sf_thumbnail_url($post_thumbnail); ?>" alt="<?php the_title(); ?>"
-                                                                 width="240" height="240" />
+                                                            <img class="lazy" src="<?php echo sf_image('placeholder.png'); ?>"
+                                                                 data-original="<?php echo sf_thumbnail_url($post_thumbnail); ?>"
+                                                                 alt="<?php the_title(); ?>" width="240" height="240"/>
                                                         </div>
                                                         <div class="info">
                                                             <h3><?php the_title(); ?></h3>
@@ -101,7 +101,7 @@
                                                     </a>
                                                 </div>
                                             </div>
-                                            <div class="col-xs-12 col-sm-9 col-lg-9 post-content">
+                                            <div class="col-xs-12 col-sm-8 col-md-9 post-content">
                                         <?php else : ?>
                                             <div class="col-xs-12 col-sm-12 col-lg-12 post-content">
                                         <?php endif; ?>

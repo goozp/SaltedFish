@@ -22,8 +22,13 @@
 </head>
 
 <body>
-
-    <nav class="navbar navbar-fixed-top clearfix" id="topNav">
+    <nav class="navbar navbar-fixed-top clearfix
+         <?php if ( $nowUser = get_current_user_id() ){
+                    if ( get_user_option( 'show_admin_bar_front', $nowUser ) == 'true' ){
+                        echo 'admin_login_nav';
+                    }
+                }
+         ?>" id="topNav">
     <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header navbar-inverse">
@@ -41,7 +46,6 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="navbar">
             <?php
-            //TODO菜单样式的控制
             $args = array(
                 'theme_location'  => 'header_menu', //register_nav_menus中已经注册了header_menu的导航菜单; 该处特定只输出选择了该位置的菜单
                 'menu'            => '',

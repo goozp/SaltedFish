@@ -25,8 +25,8 @@ class sf_widget_new extends WP_Widget
         $limit = strip_tags($instance['limit']);
         $limit = $limit ? $limit : 6;
         ?>
-        <div class="widget widget-news">
-            <h4><i class="fa fa-leaf"></i>&nbsp;最新文章</h4>
+        <div class="widget widget-news visible-lg-block">
+            <h4><span><i class="fa fa-leaf"></i>&nbsp;最新文章</span></h4>
             <ul class="list fa-ul">
                 <?php
                 $args = array(
@@ -76,3 +76,84 @@ class sf_widget_new extends WP_Widget
     }
 }
 register_widget('sf_widget_new');
+
+/**
+ * 标签化菜单
+ */
+class sf_widget_tagsMenu extends WP_Widget{
+    function sf_widget_tagsMenu()
+    {
+        $widget_ops = array('description' => 'SaltedFish：标签化菜单');
+        $this->WP_Widget('sf_widget_tagsMenu', 'SaltedFish：标签化菜单', $widget_ops);
+    }
+
+    function widget($args, $instance)
+    {
+        extract($args);
+        $widgetName = strip_tags($instance['showType']);
+        $menuDepth  = strip_tags($instance['menuDepth']);
+        $defaultMenu    = strip_tags($instance['defaultMenu']);
+        $widgetName = $widgetName ? $widgetName : '分类';
+        $menuDepth  = $menuDepth ? $menuDepth : 3;
+        $defaultMenu  = $defaultMenu ? $defaultMenu : 'wp_tag_cloud';
+        ?>
+        <div class="widget widget-tagsMenu clearfix visible-lg-block">
+            <h4><span><i class="fa fa-tags"></i>&nbsp;<?php echo $widgetName ?></span></h4>
+            <?php
+            $args = array(
+                'theme_location'  => 'sidebar_menu', //register_nav_menus中已经注册了header_menu的导航菜单; 该处特定只输出选择了该位置的菜单
+                'echo'            => true,
+                'container'       => 'ul',
+                'fallback_cb'     => $defaultMenu,
+                'items_wrap'      => '<ul id="%1$s" class="%2$s">%3$s</ul>',
+                'depth'           => $menuDepth,
+            );
+            wp_nav_menu($args); ?>
+        </div>
+        <?php
+    }
+
+    function update($new_instance, $old_instance)
+    {
+        if (!isset($new_instance['submit'])) {
+            return false;
+        }
+        $instance = $old_instance;
+        $instance['widgetName']  = strip_tags($new_instance['widgetName']);
+        $instance['menuDepth']   = strip_tags($new_instance['menuDepth']);
+        $instance['defaultMenu'] = strip_tags($new_instance['defaultMenu']);
+        return $instance;
+    }
+
+    function form($instance)
+    {
+        global $wpdb;
+        $instance = wp_parse_args((array)$instance, array('widgetName' => '分类', 'menuDepth' => 3, 'defaultMenu' => ''));
+        $widgetName = strip_tags($instance['widgetName']);
+        $menuDepth = strip_tags($instance['menuDepth']);
+        $defaultMenu = strip_tags($instance['defaultMenu']);
+        ?>
+        <p>
+            <label for="<?php echo $this->get_field_id('widgetName'); ?>">显示标题：<input
+                    id="<?php echo $this->get_field_id('widgetName'); ?>"
+                    name="<?php echo $this->get_field_name('widgetName'); ?>" type="text"
+                    value="<?php echo $widgetName; ?>"/></label>
+        </p>
+        <p>
+            <label for="<?php echo $this->get_field_id('menuDepth'); ?>">菜单深度：<input
+                    id="<?php echo $this->get_field_id('menuDepth'); ?>"
+                    name="<?php echo $this->get_field_name('menuDepth'); ?>" type="text"
+                    value="<?php echo $menuDepth; ?>"/></label>
+        </p>
+        <p>
+            <label for="<?php echo $this->get_field_id('defaultMenu'); ?>">默认菜单：<input
+                    id="<?php echo $this->get_field_id('defaultMenu'); ?>"
+                    name="<?php echo $this->get_field_name('defaultMenu'); ?>" type="text"
+                    value="<?php echo $defaultMenu; ?>"/></label>
+        </p>
+        <input type="hidden" id="<?php echo $this->get_field_id('submit'); ?>"
+               name="<?php echo $this->get_field_name('submit'); ?>" value="1"/>
+        <?php
+    }
+}
+register_widget('sf_widget_tagsMenu');

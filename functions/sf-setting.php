@@ -28,37 +28,7 @@ class SaltedFish_setting {
                 'value' => false,
                 'label' => '多个关键词请用英文逗号隔开'
             ),
-            array(
-                'title' => '评论回复邮件提醒——邮箱smtp地址',
-                'key'   => 'email-smtp',
-                'type'  => 'input',
-                'value' => false,
-                'label' => '邮箱smtp地址，如阿里云企业邮：smtp.mxhichina.com。'
-            ),
-            array(
-                'title' => '评论回复邮件提醒——选择端口',
-                'key'   => 'email-port',
-                'type'  => 'radio',
-                'value' => array(
-                    '25' => '25',
-                    '465' => '465',
-                ),
-                'label' => '与smtp地址通讯的端口'
-            ),
-            array(
-                'title' => '评论回复邮件提醒——邮箱账号',
-                'key'   => 'email-name',
-                'type'  => 'input',
-                'value' => false,
-                'label' => '您的邮箱帐号。'
-            ),
-            array(
-                'title' => '评论回复邮件提醒——邮箱密码',
-                'key'   => 'email-password',
-                'type'  => 'password',
-                'value' => false,
-                'label' => '您的邮箱密码。'
-            ),
+
         );
 
         $this->defaultsTheme = array(
@@ -101,10 +71,47 @@ class SaltedFish_setting {
                 'value' => false,
                 'label' => '侧栏Github小图标链接到的地址，可不设。'
             ),
+            array(
+                'title' => 'footer关于本站',
+                'key'   => 'footer-about',
+                'type'  => 'textarea',
+                'value' => false,
+                'label' => '对你的网站进行描述'
+            ),
         );
 
         $this->defaultsOthers = array(
-
+            array(
+                'title' => '评论回复邮件提醒——邮箱smtp地址',
+                'key'   => 'email-smtp',
+                'type'  => 'input',
+                'value' => false,
+                'label' => '邮箱smtp地址，如阿里云企业邮：smtp.mxhichina.com。'
+            ),
+            array(
+                'title' => '评论回复邮件提醒——选择端口',
+                'key'   => 'email-port',
+                'type'  => 'radio',
+                'value' => array(
+                    '25' => '25',
+                    '465' => '465',
+                ),
+                'label' => '与smtp地址通讯的端口'
+            ),
+            array(
+                'title' => '评论回复邮件提醒——邮箱账号',
+                'key'   => 'email-name',
+                'type'  => 'input',
+                'value' => false,
+                'label' => '您的邮箱帐号。'
+            ),
+            array(
+                'title' => '评论回复邮件提醒——邮箱密码',
+                'key'   => 'email-password',
+                'type'  => 'password',
+                'value' => false,
+                'label' => '您的邮箱密码。'
+            ),
         );
 
         // Add theme setting menu and page
