@@ -179,3 +179,21 @@ function sf_pagenavi( $space = 5 ) {
         printf( '<li><a class="page-numbers" href="%s" title="%s" aria-label="Next"><span aria-hidden="true">%s</span></a></li>', esc_html( get_pagenum_link( $paged + 1 ) ), 'Next »', '»' );
     }
 }
+
+/**
+ * 获得热评文章
+ **/
+function get_most_viewed($posts_num=7, $days=300){
+    global $wpdb;
+    $sql = "SELECT ID , post_title , comment_count
+            FROM $wpdb->posts
+            WHERE post_type = 'post' AND TO_DAYS(now()) - TO_DAYS(post_date) < $days
+            AND ($wpdb->posts.`post_status` = 'publish' OR $wpdb->posts.`post_status` = 'inherit')
+            ORDER BY comment_count DESC LIMIT 0 , $posts_num ";
+    $posts = $wpdb->get_results($sql);
+    $output = "";
+    foreach ($posts as $post){
+        $output .= "\n<li><i class=\"fa-li fa fa-angle-double-right\"></i><a href= \"".get_permalink($post->ID)."\" rel=\"bookmark\" title=\"".$post->post_title." (".$post->comment_count."条评论)\" >". $post->post_title."</a></li>";
+    }
+    echo $output;
+}
