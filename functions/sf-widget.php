@@ -157,3 +157,73 @@ class sf_widget_tagsMenu extends WP_Widget{
     }
 }
 register_widget('sf_widget_tagsMenu');
+
+/**
+ * 最新评论
+ */
+class sf_widget_comment extends WP_Widget{
+    function sf_widget_comment()
+    {
+        $widget_ops = array('description' => 'SaltedFish：最新评论');
+        $this->WP_Widget('sf_widget_comment', 'SaltedFish：最新评论', $widget_ops);
+    }
+
+    function sf_get_comments($num){
+        $comments = get_comments( "user_id=0&status=approve&number={$num}" );
+        $output = "";
+        foreach ($comments as $comment) {
+            $output .= "<li> 
+                        <div class='col-xs-12 col-sm-2 gavatar'>".get_avatar( $comment, 43,'',$comment->comment_author, array('class' => 'img-responsive img-circle'))."</div>
+                        <div class='col-xs-12 col-sm-10 comments-con'>
+                            <p class='comments-name'><a  href='".get_permalink($comment->comment_post_ID)."#comment-" . $comment->comment_ID . "'>".strip_tags($comment->comment_author)."</a>
+                                 <span class='comments-time'>".date('Y-m-d', strtotime($comment->comment_date_gmt))."</span>
+                            </p>
+                            <p class='comments-comment'><a href='".get_permalink($comment->comment_post_ID )."#comment-".$comment->comment_ID."'>" .strip_tags($comment->comment_content) ."</a></p>
+                        </div>
+                    </li>";
+        }
+        $output = convert_smilies($output);
+        echo $output;
+    }
+
+    function widget($args, $instance)
+    {
+        extract($args);
+        $limit = strip_tags($instance['limit']);
+        $limit = $limit ? $limit : 5;
+        ?>
+        <div class="widget widget-comments visible-lg-block">
+            <h4><span><i class="fa fa-comments"></i>&nbsp;最新评论</span></h4>
+            <ul>
+                <?php $this->sf_get_comments($limit);?>
+            </ul>
+        </div>
+        <?php
+    }
+
+    function update($new_instance, $old_instance)
+    {
+        if (!isset($new_instance['submit'])) {
+            return false;
+        }
+        $instance = $old_instance;
+        $instance['limit'] = strip_tags($new_instance['limit']);
+        return $instance;
+    }
+
+    function form($instance)
+    {
+        global $wpdb;
+        $instance = wp_parse_args((array)$instance, array('limit' => '5'));
+        $limit = strip_tags($instance['limit']);
+        ?>
+        <p><label for="<?php echo $this->get_field_id('limit'); ?>">显示条数：<input
+                    id="<?php echo $this->get_field_id('limit'); ?>"
+                    name="<?php echo $this->get_field_name('limit'); ?>" type="text"
+                    value="<?php echo $limit; ?>"/></label></p>
+        <input type="hidden" id="<?php echo $this->get_field_id('submit'); ?>"
+               name="<?php echo $this->get_field_name('submit'); ?>" value="1"/>
+        <?php
+    }
+}
+register_widget('sf_widget_comment');

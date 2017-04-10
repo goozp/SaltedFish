@@ -69,28 +69,28 @@
             </div>
             <!-- 工具栏与热门推荐 -->
             <div class="col-xs-12 col-sm-12 index-hot">
-                <div class="col-xs-12 col-sm-2 index-hot-tools hidden-xs">
+                <div class="col-xs-12 col-sm-3 index-hot-tools hidden-xs">
                     <div class="col-xs-12 hot-tools-button hot-tools-button-1">
                         <a href="#">链接收藏</a>
                     </div>
                     <div class="col-xs-12 hot-tools-button hot-tools-button-2">
                         <a href="#">我的作品</a>
                     </div>
-                    <div class="col-xs-12 hot-tools-img">
-
+                    <div class="col-xs-12 hot-tools-img"></div>
+                </div>
+                <div class="col-xs-12 col-sm-9">
+                    <div class="col-xs-12 col-sm-6 index-hot-widget index-hot-article">
+                        <h4><span><i class="fa fa-fire"></i>&nbsp;热评文章</span></h4>
+                        <ul class="">
+                            <?php echo get_most_viewed(); ?>
+                        </ul>
                     </div>
-                </div>
-                <div class="col-xs-12 col-sm-5 index-hot-widget index-hot-article">
-                    <h4><span><i class="fa fa-fire"></i>&nbsp;热评文章</span></h4>
-                    <ul class="list fa-ul">
-                        <?php echo get_most_viewed(); ?>
-                    </ul>
-                </div>
-                <div class="col-xs-12 col-sm-5 index-hot-widget index-hot-push">
-                    <h4><span><i class="fa fa-fire"></i>&nbsp;博主推荐</span></h4>
-                    <ul class="list fa-ul">
-                        <?php echo get_most_viewed(); ?>
-                    </ul>
+                    <div class="col-xs-12 col-sm-6 index-hot-widget index-hot-push">
+                        <h4><span><i class="fa fa-fire"></i>&nbsp;博主推荐</span></h4>
+                        <ul class="">
+                            <?php echo get_most_viewed(); ?>
+                        </ul>
+                    </div>
                 </div>
             </div>
             <!-- 文章列表 -->

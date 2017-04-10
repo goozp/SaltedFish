@@ -71,6 +71,10 @@ blockquote {
     margin-top: -280px;
 }
 
+.affix-bottom{
+    position: absolute;
+}
+
 /*
  * =====================================================================================================================
  *  默认小屏幕
@@ -176,13 +180,18 @@ blockquote {
 }
 
 /* 热门 推荐 */
+.index-hot{
+    padding: 0;
+}
 .index-hot-widget{
+    height: 245px;
     background-color: #ffffff;
     border: 1px solid #ffffff;
     padding: 0 10px 5px 10px;
 }
 .index-hot-tools{
-    padding: 5px 10px 5px 0;
+    height: 250px;
+    padding: 0 20px;
 }
 .hot-tools-button{
     height: 50px;
@@ -216,9 +225,8 @@ blockquote {
     background: -moz-linear-gradient(#43e97b, #38f9d7);
     background: linear-gradient(#4facfe, #00f2fe);
 }
-.hot-tools-button-2{}
 .hot-tools-img{
-    height: 100px;
+    height: 120px;
     background: url("public/images/working.png") no-repeat;
     -moz-background-size:100% 100%;
     -webkit-background-size:100% 100%;
@@ -239,16 +247,26 @@ blockquote {
     border-bottom: 2px solid #309B5C;
 }
 .index-hot-widget a{
+    text-overflow:ellipsis;
     color: #000000;
 }
 .index-hot-widget a:hover{
     color: #00ad35;
 }
 .index-hot-widget ul{
-    margin: 0 10px 0 15px;
+
+    margin: 0 5px 0 0;
 }
 .index-hot-widget li{
-    margin: 5px;
+    overflow:hidden;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+    -o-text-overflow:ellipsis;
+    width:100%;
+    margin: 8px 0;
+}
+.index-hot-widget li i{
+    margin-right: 10px;
 }
 
 /* 文章列表 */
@@ -257,7 +275,7 @@ blockquote {
     background-color: #ffffff;
 }
 .sf_post_list{
-    padding: 20px 0px;
+    padding: 20px 0;
     border-bottom: 1px solid #ecf0f1;
 }
 .sf_post_list:hover{
@@ -510,7 +528,6 @@ footer {
     .i_facebook{
         color: #4862A3;
     }
-
     .widget{
         background-color: #ffffff;
         border: 1px solid #ffffff;
@@ -521,10 +538,6 @@ footer {
     .widget:hover{
         border: 1px solid #dddddd;
         box-shadow:0 0 5px #dddddd;
-    }
-    .widget ul{
-        color: #34495e;
-        margin-left: 25px;
     }
     .widget h4{
         color: #309B5C;
@@ -541,8 +554,8 @@ footer {
     .widget a:hover{
         color: #00ad35;
     }
-    .widget-tagsMenu{
-
+    .widget-news ul{
+        margin: 0 0 0 20px;
     }
     .widget-tagsMenu ul{
         list-style-type: none;
@@ -579,6 +592,55 @@ footer {
     .widget-tagsMenu ul li ul li ul li a:hover{
         background-color: #2ecc71;
         border: 1px solid #2ecc71;
+    }
+    .widget-comments{
+        margin: 0;
+    }
+    .widget-comments ul{
+        list-style: none;
+        margin: 0;
+    }
+    .widget-comments ul li{
+        height: 40px;
+        margin-bottom: 7px;
+    }
+    .widget-comments ul li div{
+        padding: 0;
+    }
+    .widget-comments ul li .gavatar{
+        float: left;
+        height: 40px;
+        width: 40px;
+        display: block;
+    }
+    .widget-comments ul li .comments-con{
+        padding-left: 5px;
+    }
+    .comments-con p{
+        font-size: 13px;
+        overflow:hidden;
+        white-space:nowrap;
+        text-overflow:ellipsis;
+        -o-text-overflow:ellipsis;
+        width: 100%;
+        height: 20px;
+        line-height: 20px;
+        margin: 0;
+    }
+    .comments-name a{
+        color: #309B5C;
+    }
+    .comments-name a:hover{
+        color: #3498db;
+    }
+    .comments-time{
+        font-size: 10px;
+        color: #95a5a6;
+        display: inline-block;
+        float: right;
+    }
+    .comments-comment a{
+        color: #2c3e50;
     }
 }
 

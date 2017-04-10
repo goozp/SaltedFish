@@ -193,7 +193,7 @@ function get_most_viewed($posts_num=7, $days=300){
     $posts = $wpdb->get_results($sql);
     $output = "";
     foreach ($posts as $post){
-        $output .= "\n<li><i class=\"fa-li fa fa-angle-double-right\"></i><a href= \"".get_permalink($post->ID)."\" rel=\"bookmark\" title=\"".$post->post_title." (".$post->comment_count."条评论)\" >". $post->post_title."</a></li>";
+        $output .= "\n<li><i class=\"fa fa-angle-double-right\"></i><a href= \"".get_permalink($post->ID)."\" rel=\"bookmark\" title=\"".$post->post_title." (".$post->comment_count."条评论)\" >". $post->post_title."</a></li>";
     }
     echo $output;
 }
