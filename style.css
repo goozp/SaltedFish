@@ -455,10 +455,10 @@ footer {
     .index-subject{
         height: 360px
     }
-
     /* 右侧栏 */
     .right-sidebar{
         padding: 0 7px;
+        min-height: 1200px;
     }
     .author-info-widget{
         background: -webkit-linear-gradient(#309B5C, #ffffff); /* Safari 5.1 - 6.0 */
@@ -467,7 +467,7 @@ footer {
         background: linear-gradient(#309B5C, #ffffff); /* 标准的语法 */
         border: 1px solid #ffffff;
         padding: 10px;
-        margin-bottom: 10px;
+        margin-bottom: 5px;
     }
     .author-info-widget:hover{
         border: 1px solid #dddddd;
@@ -533,7 +533,7 @@ footer {
         border: 1px solid #ffffff;
         padding: 0 10px 5px 10px;
         width: 271px;
-        margin-bottom: 10px;
+        margin-bottom: 5px;
     }
     .widget:hover{
         border: 1px solid #dddddd;
@@ -556,6 +556,12 @@ footer {
     }
     .widget-news ul{
         margin: 0 0 0 20px;
+    }
+    .widget-new {
+        margin: 7px 0;
+    }
+    .widget-new p{
+        margin: 0;
     }
     .widget-tagsMenu ul{
         list-style-type: none;
