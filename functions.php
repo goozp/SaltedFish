@@ -42,7 +42,7 @@ function sf_scripts_with_jquery()
     wp_register_script( 'jquery', sf_script( 'jquery.min.js' ), false, '1.11.3' );
     wp_enqueue_script( 'jquery', false, false, '1.11.3' );
     //顶部loading js
-    wp_enqueue_script( 'pace_js', sf_script( 'pace.min.js' ), null, SF_VERSION, true );
+    wp_enqueue_script( 'pace_js', sf_script( 'pace.min.js' ), null, SF_VERSION, false );
     // bootstrap js
     wp_register_script( 'custom-script', get_template_directory_uri() . '/public/bootstrap/js/bootstrap.min.js', array( 'jquery' ), '3.3.7' );
     wp_enqueue_script( 'custom-script' );

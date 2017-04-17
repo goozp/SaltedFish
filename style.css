@@ -44,13 +44,17 @@ caption, td, th {
 }
 
 blockquote {
+    background-color: #ecf0f1;
     display: block;
     padding: 0 0 0 10px;
-    border-left: 3px solid #00A0F4;
+    border-left: 3px solid #27ae60;
     vertical-align: baseline;
     font-style: normal;
     font-size: 100%;
     line-height: 22px
+}
+blockquote p{
+    margin: 0 0 0 15px;
 }
 
 .avatar{
@@ -367,6 +371,115 @@ blockquote {
 }
 
 /*
+ * 文章页
+ */
+.sf_page_post{
+    border-top: 1px solid #f0f0ee;
+    border-left: 1px solid #f0f0ee;
+    background-color: #FFFFFF;
+    -moz-box-shadow:3px 3px 4px #C8C8C8;
+    -webkit-box-shadow:3px 3px 4px #C8C8C8;
+    box-shadow:1px 1px 2px #C8C8C8;
+    filter:progid:DXImageTransform.Microsoft.Shadow(Strength=4,Direction=135,Color='#000000');
+}
+
+.sf_page_post .post-title{
+    font-size: 28px;
+}
+
+.sf_page_post .post-title a{
+    color: #000000;
+}
+
+.sf_page_post .post-page-tags, .sf_page_post .post-page-tags a{
+    color: #95a5a6;
+    margin-bottom: 5px;
+}
+
+.sf_page_post .post-title a:hover, .jp_page_post .post-page-tags a:hover{
+    color: #00ad35;
+    text-decoration: none;
+}
+
+.lastAndNext{
+    margin: 10px 0;
+}
+
+.lastAndNext-right, .lastAndNext-left{
+    padding: 0;
+}
+
+.lastAndNext-left p{
+    margin: 0;
+}
+
+.lastAndNext-right p{
+    float: right;
+    margin: 0;
+}
+
+.sf_page_post .post_body{
+    margin: auto;
+}
+
+.sf_page_breadcrumbs{
+    padding-left: 0;
+}
+
+.sf_page_breadcrumbs .breadcrumb{
+    padding-left: 10px;
+    background-color: #ffffff;
+}
+
+.sf_page_post .post-content{
+    padding: 5px 0;
+}
+
+.sf_page_post .post-content, .sf_page_post .post-content p{
+    word-break: normal;
+    word-wrap: break-word;
+    font-size: 15px;
+    line-height: 27px;
+}
+
+.post-content img{
+    max-width: 100%;
+    height: auto;
+    margin: 5px;
+}
+img.alignleft{
+    display: inline;
+    float: left;
+}
+img.alignright{
+    display: inline;
+    float: right;
+}
+img.aligncenter{
+    clear: both;
+    display: block;
+    margin:auto;
+}
+body.full-content .post-body h4, .post-content h4 {
+    display: block;
+    margin: 15px 0;
+    padding: 5px 0;
+    border-bottom: 1px solid #ededed;
+}
+.post-state{
+    width: 93%;
+    background-color: #ecf0f1;
+    border-left: 1px solid #95a5a6;
+    border-right: 1px solid #95a5a6;
+    margin: 0 14px 10px 14px;
+}
+.post-state p{
+    margin: 10px 10px;
+    word-break: break-all;
+    word-wrap: break-word;
+}
+
+/*
  * footer
  */
 footer {
@@ -433,6 +546,9 @@ footer {
         -o-background-size:contain;
         background-size:contain;
     }
+    .post-state{
+        width: 96%;
+    }
 }
 
 /*
@@ -443,6 +559,9 @@ footer {
 @media (min-width: 992px) {
     .index-subject{
         height: 390px
+    }
+    .post-state{
+        width: 97%;
     }
 }
 
@@ -647,6 +766,11 @@ footer {
     }
     .comments-comment a{
         color: #2c3e50;
+    }
+
+    /*文章主体*/
+    .sf_page_post{
+        margin-right: 0;
     }
 }
 

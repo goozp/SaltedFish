@@ -1,4 +1,7 @@
 <?php get_header(); ?>
+<script type="text/javascript">
+    
+</script>
     <div class="container">
         <div class="col-xs-12 col-lg-9 page-main-frame">
             <div class="row">
@@ -10,6 +13,7 @@
                             <?php the_title(); ?></li>
                         <?php rewind_posts(); ?>
                     </ol>
+                </div>
 
                     <?php if ( have_posts() ):while ( have_posts() ) : the_post(); ?>
                         <div id="post-<?php the_ID(); ?>"  class="col-xs-12 col-sm-12">
@@ -40,7 +44,7 @@
                                         </li>
                                         <li class="inline-li">
                                             <i class="fa fa-comments-o"></i>
-                                            <?php comments_popup_link('0 reply','1 reply', '% replies'); ?>
+                                            <?php comments_popup_link('暂无回复','1 回复', '% 回复'); ?>
                                         </li>
                                     </ul>
                                 </div>
@@ -53,8 +57,13 @@
                                     <br>
                                 </div>
 
-                                <div class="col-xs-12 col-sm-12 post-tags">
+                                <div class="col-xs-12 col-sm-12 post-page-tags">
                                     <i class="fa fa-tags"></i> 标签：<?php the_tags('', '，', ''); ?>
+                                </div>
+
+                                <div class="col-xs-12 col-sm-12 post-state">
+                                    <p><b>版权声明：</b>如无说明，则为 <a href="<?php bloginfo( 'url' ); ?>" target="_blank"><?php bloginfo( 'name' ); ?></a> 原创，版权归作者所有，转载请注明出处！</p>
+                                    <p><b>本文链接：</b><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_permalink(); ?></a></p>
                                 </div>
                             </div>
                         </div>
@@ -85,8 +94,6 @@
                     </div>
                     <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
                     <!-- 百度分享 end -->
-
-                </div>
             </div>
         </div>
 
