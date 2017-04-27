@@ -1,7 +1,4 @@
 <?php get_header(); ?>
-<script type="text/javascript">
-    
-</script>
     <div class="container">
         <div class="col-xs-12 col-lg-9 page-main-frame">
             <div class="row">
@@ -58,7 +55,23 @@
                                 </div>
 
                                 <div class="col-xs-12 col-sm-12 post-page-tags">
-                                    <i class="fa fa-tags"></i> 标签：<?php the_tags('', '，', ''); ?>
+                                    <div class="col-xs-12 col-sm-9">
+                                        <i class="fa fa-tags"></i> 标签：<?php the_tags('', '，', ''); ?>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-3">
+                                        <!-- 百度分享 begin -->
+                                        <div class="bdsharebuttonbox">
+                                            <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+                                            <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+                                            <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+                                            <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+                                            <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+                                            <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+                                            <a href="#" class="bds_more" data-cmd="more"></a>
+                                        </div>
+                                        <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+                                        <!-- 百度分享 end -->
+                                    </div>
                                 </div>
 
                                 <div class="col-xs-12 col-sm-12 post-state">
@@ -79,21 +92,6 @@
                         </div>
                     </div>
                     <!-- 上一页下一页 end -->
-
-                    <!-- 百度分享 begin -->
-                    <div class="col-xs-12 col-sm-12 bdsharebuttonbox">
-                        <a href="#" class="bds_more" data-cmd="more"></a>
-                        <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
-                        <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
-                        <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
-                        <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
-                        <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
-                        <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
-                        <a href="#" class="bds_youdao" data-cmd="youdao" title="分享到有道云笔记"></a>
-                        <a href="#" class="bds_evernotecn" data-cmd="evernotecn" title="分享到印象笔记"></a>
-                    </div>
-                    <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
-                    <!-- 百度分享 end -->
             </div>
         </div>
 

@@ -28,31 +28,38 @@ get_template_part( 'functions/sf-widget' );
  * */
 function sf_scripts_with_jquery()
 {
-    //main css
+    // main css
     wp_enqueue_style( 'style', get_bloginfo( 'stylesheet_url' ), $deps = array(), SF_VERSION  );
     // 导航菜单 css
     wp_register_style( 'navi', get_template_directory_uri() . '/public/css/bootstrap-off-canvas-nav.css' );
     wp_enqueue_style( 'navi' );
-    //顶部loading css
+    // 顶部loading css
     wp_register_style( 'pace', get_template_directory_uri() . '/public/css/pace-theme-flash.css' );
     wp_enqueue_style( 'pace' );
 
-    //JQuery js
+
+
+    // JQuery js
     wp_deregister_script( 'jquery' );
     wp_register_script( 'jquery', sf_script( 'jquery.min.js' ), false, '1.11.3' );
-    wp_enqueue_script( 'jquery', false, false, '1.11.3' );
-    //顶部loading js
+    wp_enqueue_script( 'jquery' );
+    // 顶部loading js
     wp_enqueue_script( 'pace_js', sf_script( 'pace.min.js' ), null, SF_VERSION, false );
     // bootstrap js
-    wp_register_script( 'custom-script', get_template_directory_uri() . '/public/bootstrap/js/bootstrap.min.js', array( 'jquery' ), '3.3.7' );
-    wp_enqueue_script( 'custom-script' );
+    wp_register_script( 'bootstrap', get_template_directory_uri() . '/public/bootstrap/js/bootstrap.min.js', array( 'jquery' ), '3.3.7', false );
+    wp_enqueue_script( 'bootstrap' );
     // 导航菜单 js
-    wp_enqueue_script( 'nav_js', sf_script( 'bootstrap-off-canvas-nav.js' ), null, SF_VERSION, false );
-    //lazyload.js
-    wp_enqueue_script( 'lazyload', sf_script( 'jquery.lazyload.min.js' ), null, '1.9.7', false );
-    //主题js
-    wp_enqueue_script( 'main_js', sf_script( 'main.js' ), null, SF_VERSION, false );
-
+    wp_enqueue_script( 'nav_js', sf_script( 'bootstrap-off-canvas-nav.js' ), array( 'bootstrap' ), SF_VERSION, true );
+    // lazyload.js
+    wp_enqueue_script( 'lazyload', sf_script( 'jquery.lazyload.min.js' ), array( 'jquery' ), '1.9.7', true );
+    // 主题js
+    wp_enqueue_script( 'main_js', sf_script( 'main.js' ), null, SF_VERSION, true );
+    // highslide
+    if (is_single()){
+        wp_register_style( 'highslide-css', get_template_directory_uri() . '/public/highslide/highslide.css', null, '5.0' );
+        wp_enqueue_style( 'highslide-css' );
+        wp_enqueue_script( 'highslide-js', get_template_directory_uri() . '/public/highslide/highslide-with-gallery.min.js', null, '5.0', true );
+    }
 }
 add_action( 'wp_enqueue_scripts', 'sf_scripts_with_jquery' );
 
@@ -123,3 +130,14 @@ if ( is_admin() ) {
  */
 include("public/show-useragent/show-useragent.php");
 
+/**
+ * Add HighSlide Image Code
+ */
+add_filter('the_content', 'addhighslideclass_replace');
+function addhighslideclass_replace ($content){
+    global $post;
+    $pattern = "/<a(.*?)href=('|\")([^>]*).(bmp|gif|jpeg|jpg|png)('|\")(.*?)>(.*?)<\/a>/i";
+    $replacement = '<a$1href=$2$3.$4$5 class="highslide" onclick="return hs.expand(this);"$6>$7</a>';
+    $content = preg_replace($pattern, $replacement, $content);
+    return $content;
+}
