@@ -75,7 +75,7 @@
                                 </div>
 
                                 <div class="col-xs-12 col-sm-12 post-state">
-                                    <p><b>版权声明：</b>如无说明，则为 <a href="<?php bloginfo( 'url' ); ?>" target="_blank"><?php bloginfo( 'name' ); ?></a> 原创，版权归作者所有，转载请注明出处！</p>
+                                    <p><b>版权声明：</b>本站文章如无说明，则为 <a href="<?php bloginfo( 'url' ); ?>" target="_blank"><?php bloginfo( 'name' ); ?></a> 原创，版权归作者所有，转载请注明出处！</p>
                                     <p><b>本文链接：</b><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_permalink(); ?></a></p>
                                 </div>
                             </div>
@@ -92,6 +92,8 @@
                         </div>
                     </div>
                     <!-- 上一页下一页 end -->
+
+                <?php comments_template(); ?>
             </div>
         </div>
 

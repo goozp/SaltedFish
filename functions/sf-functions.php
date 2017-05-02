@@ -197,3 +197,113 @@ function get_most_viewed($posts_num=7, $days=300){
     }
     echo $output;
 }
+
+/**
+ * 评论回调函数
+ * @param $comment
+ * @param $args
+ * @param $depth
+ */
+function sf_comment( $comment, $args, $depth ) {
+    $GLOBALS['comment'] = $comment;
+    global $commentcount;
+
+    if ( ! $commentcount ) {
+        $page         = ( ! empty( $in_comment_loop ) ) ? get_query_var( 'cpage' ) - 1 : get_page_of_comment( $comment->comment_ID, $args ) - 1;
+        $cpp          = get_option( 'comments_per_page' );
+        $commentcount = $cpp * $page;
+    }
+
+    if ( ! $comment->comment_parent ) {
+        //$email  = $comment->comment_author_email;
+        $avatar = get_avatar( $comment, $size = '50', $default = '', $alt = '', array('class' => 'img-circle') );
+        ?>
+        <li <?php comment_class('media'); ?> id="li-comment-<?php comment_ID() ?>">
+            <div class="media-left text-center">
+                <div class="comments-data-avatar">
+                    <?php echo $avatar; ?>
+                </div>
+            <span class="comments-data-floor">
+                <?php
+                ++ $commentcount;
+                printf( '%s 楼', $commentcount );
+                ?>
+            </span>
+            </div>
+            <div class="media-body" id="comment-<?php comment_ID(); ?>">
+                <div class="comment-person">
+                    <span class="comment-span <?php if ( $comment->user_id == 1 ) {
+                        echo "comment-author";
+                    } ?>">
+                        <?php printf( '%s', get_comment_author_link() ) ?>
+                    </span>
+                    <?php if ( $comment->user_id == 1 ) {?>
+                        <span class="label label-default comments-bozhu">博主</span>
+                    <?php } ?>
+                    &nbsp;
+                    <?php CID_print_comment_flag(); echo ' ';CID_print_comment_browser(); ?>
+                </div>
+                <div class="comment-text"><?php comment_text() ?></div>
+                <div class="comment-date-reply">
+                    <span class="comment-span comment-date">
+                        <i class="fa fa-clock-o"></i>
+                        <?php echo date('Y-m-d H:i',strtotime($comment->comment_date)); ?>
+                    </span>
+                    &nbsp;&nbsp;&nbsp;
+                    <i class="fa fa-reply"></i>
+                    <?php comment_reply_link( array_merge( $args, array(
+                        'depth'      => $depth,
+                        'max_depth'  => $args['max_depth'], 
+                    ) ) ) ?>
+                </div>
+            </div>
+        </li>
+    <?php } else {
+        ?>
+        <li <?php comment_class('media'); ?> id="li-comment-<?php comment_ID() ?>">
+            <div class="media-left">
+                <div class="comments-data-avatar">
+                    <?php echo get_avatar( $comment, $size = '50', $default = '', $alt = '', array('class' => 'img-circle',) ) ?>
+                </div>
+            </div>
+            <div class="media-body media-body-children" id="comment-<?php comment_ID(); ?>">
+                <div class="comment-person">
+				<span class="comment-span <?php if ( $comment->user_id == 1 ) {
+                    echo "comment-author";
+                } ?>">
+					<?php
+                    $parent_id      = $comment->comment_parent;
+                    $comment_parent = get_comment( $parent_id );
+                    printf( '%s', get_comment_author_link() );
+                    ?>
+				</span>
+                    <?php if ( $comment->user_id == 1 ) {?>
+                        <span class="label label-default comments-bozhu">博主</span>
+                    <?php } ?>
+                    &nbsp;
+                    <?php CID_print_comment_flag(); echo ' ';CID_print_comment_browser(); ?>
+                </div>
+                <div class="comment-text">
+                    <p>
+                    <span class="comment-to"><a href="<?php echo "#comment-" . $parent_id; ?>"
+                                                title="<?php echo mb_strimwidth( strip_tags( apply_filters( 'the_content', $comment_parent->comment_content ) ), 0, 100, "..." ); ?>">@<?php echo $comment_parent->comment_author; ?></a>：
+                    </span>
+                        <?php echo get_comment_text(); ?>
+                    </p>
+                </div>
+                <div class="comment-date-reply">
+                <span class="comment-span comment-date">
+                    <i class="fa fa-clock-o"></i>
+                    <?php echo date('Y-m-d H:i',strtotime($comment->comment_date)); ?>
+                </span>
+                    &nbsp;&nbsp;&nbsp;
+                    <i class="fa fa-reply"></i>
+                    <?php comment_reply_link( array_merge( $args, array(
+                        'depth'      => $depth,
+                        'max_depth'  => $args['max_depth']
+                    ) ) ) ?>
+                </div>
+            </div>
+        </li>
+    <?php }
+}
