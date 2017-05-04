@@ -478,6 +478,118 @@ body.full-content .post-body h4, .post-content h4 {
     word-break: break-all;
     word-wrap: break-word;
 }
+/*
+ * 评论
+ */
+.comments-data{
+    padding: 0;
+}
+.comments-data:hover{
+
+}
+.comments-data-body{
+
+}
+.comments-data-body ul{
+    list-style: none;
+}
+.comments-data-title h4{
+    color: #309B5C;
+    padding-bottom: 5px;
+    border-bottom: 2px solid #ecf0f1;
+    margin-bottom: 5px;
+}
+
+.comments-data-title h4 span{
+    padding-bottom: 5px;
+    border-bottom: 2px solid #309B5C;
+}
+.comment{
+    border-bottom: solid 1px #ecf0f1;
+}
+.comments-data-body{
+    margin-top: 20px;
+}
+.comments-data-body li{
+    padding: 7px;
+    margin: 0;
+}
+.comments-data-body .children{
+    margin-left: 60px;
+}
+.comments-data-body .children ul{
+    margin-left: 0;
+}
+.comments-data-body .children .comments-data-avatar{
+    padding-top: 7px;
+}
+.comments-bozhu{
+    font-family: Tahoma, Arial, sans-serif;
+    padding: 2px 5px;
+    background-color: #d35400;
+}
+.comment-person .comment-span{
+    font-weight: bold;
+}
+.comment-date-reply{
+    color: #bdc3c7;
+}
+.comment-date-reply a{
+    color: #bdc3c7;
+}
+.comment-date-reply a:hover{
+    color: #27ae60;
+}
+.link-to-reply-button{
+    position: absolute;
+    right: 15px;
+    border-bottom: 2px solid #e74c3c;
+}
+.comments-respond{
+    width: auto;
+    margin: 15px 15px;
+    padding: 0 10px;
+    border: 1px solid #ffffff;
+}
+.comments-respond:hover{
+    border: 1px solid #dddddd;
+    box-shadow:0 0 5px #dddddd;
+}
+.sf_comments_col{
+    margin-bottom: 7px;
+}
+.sf_comments_col textarea{
+    padding-right: 10px;
+}
+.cancel-comment-reply{
+    margin-right: 15px;
+}
+.cancel-comment-reply a{
+    display: block;
+    height: 34px;
+    width: 110px;
+    padding: 6px 12px;
+    border: solid 1px #7f8c8d;
+    color: #000000;
+    cursor: pointer;
+    border-radius: 4px;
+}
+.cancel-comment-reply a:hover{
+    background-color: #27ae60;
+    border: solid 1px #27ae60;
+    color: #ffffff;
+}
+#submit{
+    background-color: #27ae60;
+    border: solid 1px #27ae60;
+}
+#submit:hover{
+    background-color: #2c3e50;
+    border: solid 1px #2c3e50;
+}
+.reply-button{
+    margin-bottom: 5px;
+}
 
 /*
  * footer

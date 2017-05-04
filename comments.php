@@ -1,4 +1,4 @@
-<div class="col-xs-12 col-sm-12 jp_page_comments" id="comments">
+<div class="col-xs-12 col-sm-12 sf_page_comments" id="comments">
     <div class="row">
         <?php
         if ( isset( $_SERVER['SCRIPT_FILENAME'] ) && 'comments.php' == basename( $_SERVER['SCRIPT_FILENAME'] ) ) {
@@ -14,16 +14,12 @@
 
         <!-- 评论显示 -->
         <?php if ( have_comments() ) : ?>
-            <div class="col-xs-12 col-sm-12 comments-data comments-data-header">
-                <p class="text-center">
-                    <span><?php echo '当前共有 <strong>'.$post->comment_count.'</strong> 条评论' ?></span>
-                    &nbsp;&nbsp;&nbsp;
-                    <span><a class="text-right" href="#respond"><i class="fa fa-comment-o"></i> 我要评论</a></span>
-                </p>
-            </div>
             <div class="col-xs-12 col-sm-12 comments-data comments-data-body">
                 <div class="col-xs-12 col-sm-12 comments-data-title">
-                    <h4><strong><i class="fa fa-comments"></i> 所有评论</strong></h4>
+                    <h4>
+                        <span><i class="fa fa-comments"></i> 当前共有 <strong style="color: #f39c12"><?php echo $post->comment_count; ?></strong> 条评论</span>
+                        <span class="link-to-reply-button"><a href="#respond"><i class="fa fa-comment-o"></i> 我要评论</a></span>
+                    </h4>
                 </div>
                 <div class="col-xs-12 col-sm-12 comments-data-body">
                     <ul class="comment-list media-list comments-data-media clearfix">
@@ -49,7 +45,7 @@
             <div  class="col-xs-12 col-sm-12 comments-data comments-respond" id="respond">
                 <div class="row">
                     <div class="col-xs-12 col-sm-12">
-                        <h3 class="comments-title"><i class="fa fa-commenting"></i>&nbsp;<?php echo "发表评论" ?> <small>为了网站的健康成长，请友爱发言~</small></h3>
+                        <h4 class="comments-title"><i class="fa fa-commenting"></i>&nbsp;<?php echo "发表评论" ?> <small>为了网站的健康成长，请友爱发言~</small></h4>
                     </div>
                     <form method="post" action="<?php echo site_url('wp-comments-post.php');?>" id="comment_form">
 
@@ -69,9 +65,7 @@
 
                         <?php if ( $comment_author != "" ): ?>
                         <p class="title welcome">
-                            <?php echo "欢迎" ?><?php printf(' <strong>%s</strong> ', $comment_author ) ?><?php echo "回来" ?>
-                            <?php echo "进行回复" ?>
-                            <span class="cancel-comment-reply"><?php cancel_comment_reply_link('点击取消回复') ?></span>
+                            欢迎<?php printf(' <strong>%s</strong> ', $comment_author ) ?>回来，写个评论吧？
                         </p>
                 </div>
                 <div  class="col-xs-12 col-sm-12">
@@ -81,49 +75,42 @@
                     <div class="col-xs-12 col-sm-12">
                         <div id="author_info">
                             <?php endif; ?>
-
-                            <a id="cancel-comment-reply-link"  href="javascript:;">取消回复</a>
-
-                            
-                            <div class="col-xs-12 col-sm-6 input-group jp_comments_col">
+                            <div class="col-xs-12 col-sm-6 input-group sf_comments_col">
                                 <span class="input-group-addon" id="sizing-addon2"><i class="fa fa-user"></i>&nbsp;&nbsp;  昵称 <small class="text-danger">*</small></span>
                                 <input  class="form-control"  type="text" name="author" id="author"
                                         placeholder="输入一个昵称" aria-describedby="sizing-addon2"
                                         value="<?php echo $comment_author; ?>">
                             </div>
-                            <div class="col-xs-12 col-sm-6 input-group jp_comments_col">
+                            <div class="col-xs-12 col-sm-6 input-group sf_comments_col">
                                 <span class="input-group-addon" id="sizing-addon2"><i class="fa fa-envelope"></i>&nbsp;Email <small class="text-danger">*</small></span>
                                 <input  class="form-control"  type="text" name="email" id="mail"
                                         placeholder="输入您的邮箱" aria-describedby="sizing-addon2"
                                         value="<?php echo $comment_author_email; ?>">
                             </div>
-                            <div class="col-xs-12 col-sm-6 input-group jp_comments_col">
+                            <div class="col-xs-12 col-sm-6 input-group sf_comments_col">
                                 <span class="input-group-addon" id="sizing-addon2"><i class="fa fa-link"></i>&nbsp;  网址 &nbsp;</span>
                                 <input  class="form-control"  type="text" name="url" id="url"
                                         placeholder="Example:http://yourwebsite.com" aria-describedby="sizing-addon2"
                                         value="<?php echo $comment_author_url; ?>">
                             </div>
-
                         </div>
                     </div>
                     <?php endif; ?>
 
-                    <div class="col-xs-12 col-sm-12 jp_comments_col">
-				<textarea class="form-control" name="comment" id="comment" rows="4" tabindex="4" placeholder="输入评论内容..."
+                    <div class="col-xs-12 col-sm-12 sf_comments_col">
+                        <textarea class="form-control" name="comment" id="comment" rows="4" tabindex="4" placeholder="输入评论内容..."
                           onkeydown="if(event.ctrlKey&&event.keyCode==13){document.getElementById('submit').click();return false};"></textarea>
                     </div>
 
                     <div class="col-xs-12 col-sm-12">
-                        <div class="col-xs-6 col-sm-6 checkbox">
+                        <div class="col-xs-12 col-sm-7 checkbox reply-button">
                             <label>
                                 <input type="checkbox"  name="comment_mail_notify"  id="comment_mail_notify" value="comment_mail_notify" checked="checked">
                                 <strong>有回复时邮件通知我</strong> <i class="fa fa-envelope-o"></i>
                             </label>
                         </div>
-
-                        <div class="col-xs-6 col-sm-6 jp_comments_col comments_submit">
-                            <input class="btn btn-primary" id="submit" type="submit" name="submit" value="提交 / Ctrl+Enter" />
-                        </div>
+                        <div class="col-xs-12 col-sm-2 cancel-comment-reply reply-button"><?php cancel_comment_reply_link('点击取消回复') ?></div>
+                        <div class="col-xs-12 col-sm-2 reply-button"><input class="btn btn-primary" id="submit" type="submit" name="submit" value="提交 / Ctrl+Enter" /></div>
                     </div>
 
                     <?php comment_id_fields(); ?>

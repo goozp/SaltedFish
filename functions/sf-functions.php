@@ -250,33 +250,32 @@ function sf_comment( $comment, $args, $depth ) {
                         <?php echo date('Y-m-d H:i',strtotime($comment->comment_date)); ?>
                     </span>
                     &nbsp;&nbsp;&nbsp;
-                    <i class="fa fa-reply"></i>
                     <?php comment_reply_link( array_merge( $args, array(
-                        'depth'      => $depth,
-                        'max_depth'  => $args['max_depth'], 
-                    ) ) ) ?>
+                            'depth'      => $depth,
+                            'max_depth'  => $args['max_depth'],
+                            'before'     => '<i class="fa fa-reply"></i> '
+                        ) ) ) ?>
+
                 </div>
             </div>
         </li>
-    <?php } else {
-        ?>
+    <?php } else { ?>
         <li <?php comment_class('media'); ?> id="li-comment-<?php comment_ID() ?>">
             <div class="media-left">
                 <div class="comments-data-avatar">
                     <?php echo get_avatar( $comment, $size = '50', $default = '', $alt = '', array('class' => 'img-circle',) ) ?>
                 </div>
             </div>
+
             <div class="media-body media-body-children" id="comment-<?php comment_ID(); ?>">
                 <div class="comment-person">
-				<span class="comment-span <?php if ( $comment->user_id == 1 ) {
-                    echo "comment-author";
-                } ?>">
-					<?php
-                    $parent_id      = $comment->comment_parent;
-                    $comment_parent = get_comment( $parent_id );
-                    printf( '%s', get_comment_author_link() );
-                    ?>
-				</span>
+                    <span class="comment-span <?php if ( $comment->user_id == 1 ) {
+                        echo "comment-author"; } ?>">
+                        <?php $parent_id      = $comment->comment_parent;
+                              $comment_parent = get_comment( $parent_id );
+                              printf( '%s', get_comment_author_link() );
+                        ?>
+                    </span>
                     <?php if ( $comment->user_id == 1 ) {?>
                         <span class="label label-default comments-bozhu">博主</span>
                     <?php } ?>
@@ -297,10 +296,10 @@ function sf_comment( $comment, $args, $depth ) {
                     <?php echo date('Y-m-d H:i',strtotime($comment->comment_date)); ?>
                 </span>
                     &nbsp;&nbsp;&nbsp;
-                    <i class="fa fa-reply"></i>
                     <?php comment_reply_link( array_merge( $args, array(
                         'depth'      => $depth,
-                        'max_depth'  => $args['max_depth']
+                        'max_depth'  => $args['max_depth'],
+                        'before'     => '<i class="fa fa-reply"></i> '
                     ) ) ) ?>
                 </div>
             </div>
