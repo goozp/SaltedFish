@@ -155,7 +155,7 @@
                                                         </li>
                                                         <li class="inline-li">
                                                             <i class="fa fa-comments-o"></i>
-                                                            <?php comments_popup_link( '暂无回复', '1 条回复', '% 条回复'); ?>
+                                                            <?php comments_popup_link( '暂无回复', '1 条回复', '% 条回复', '', '评论关闭'); ?>
                                                         </li>
                                                     </ul>
                                                 </div>

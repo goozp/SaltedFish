@@ -27,7 +27,7 @@
                     </ul>
                     <div class="comments-data-footer clearfix">
                         <?php if ( 'open' != $post->comment_status ) : ?>
-                            <h3 class="comments-title"><?php echo "评论关闭！" ?></h3>
+                            <div class="alert alert-warning" role="alert">评论已关闭！</div>
                         <?php else : ?>
                             <div class="comment-topnav text-center"><?php paginate_comments_links( 'prev_text=«&next_text=»' ); ?></div>
                         <?php endif; ?>
@@ -36,7 +36,7 @@
             </div>
         <?php else : ?>
             <?php if ( 'open' != $post->comment_status ) : ?>
-                <h3 class="comments-title"><?php echo "评论关闭！" ?></h3>
+                <div class="alert alert-warning" role="alert">评论已关闭！</h4></div>
             <?php endif; ?>
         <?php endif; ?>
 
@@ -58,7 +58,6 @@
                             <p class="title welcome"><?php printf( '欢迎 <a href="%1$s">%2$s</a> 回来，', get_option( 'siteurl' ) . '/wp-admin/profile.php', $user_identity ); ?>
                                 <a href="<?php echo wp_logout_url( get_permalink() ); ?>"
                                    title="<?php echo "退出登录" ?>"><?php echo "退出登录" ?></a>
-                                <span class="cancel-comment-reply"><?php cancel_comment_reply_link('点击取消回复') ?></span>
                             </p>
                         </div>
                         <?php else : ?>

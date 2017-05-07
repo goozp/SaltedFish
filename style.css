@@ -590,7 +590,10 @@ body.full-content .post-body h4, .post-content h4 {
 .reply-button{
     margin-bottom: 5px;
 }
-
+.fa-qq{
+    height: 10px;
+    width: 10px;
+}
 /*
  * footer
  */
