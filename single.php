@@ -54,18 +54,38 @@
                                     <br>
                                 </div>
 
-                                <div class="col-xs-12 col-sm-12" id="baiduShare">
-                                    <!-- 百度分享 begin -->
-                                    <div class="bdsharebuttonbox">
-                                        <a href="#" class="bds_more" data-cmd="more"></a>
-                                        <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
-                                        <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
-                                        <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
-                                        <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
-                                        <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+                                <div class="hidden-xs col-sm-12">
+                                    <div class="col-xs-12 col-sm-12 post-share-pay">
+                                        <a href="javascript:void(0)" onclick="dashangToggle()" class="thumbs_button fa fa-coffee" title="打赏支持一下"> 打赏</a>
+                                        <a href="javascript:void(0)" class="reward_button fa fa-share-alt" title="分享"> 分享</a>
                                     </div>
-                                    <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
-                                    <!-- 百度分享 end -->
+                                </div>
+
+                                <div class="pay-content">
+                                    <div class="hide_box"></div>
+                                    <div class="shang_box">
+                                        <a class="shang_close" href="javascript:void(0)" onclick="dashangToggle()" title="关闭"><img src="<?php echo sf_image('close.jpg'); ?>" alt="取消" /></a>
+                                        <div class="shang_tit">
+                                            <p>如果您觉得我的文章对您有所帮助，欢迎您打赏一点咖啡钱~</p>
+                                        </div>
+                                        <div class="shang_payimg">
+                                            <img src="<?php echo sf_image('alipay_pay.png'); ?>" alt="扫码支持" title="扫一扫" />
+                                        </div>
+                                        <div class="pay_explain">感谢您的支持，我会继续努力的！</div>
+                                        <div class="shang_payselect">
+                                            <div class="pay_item checked" data-id="alipay">
+                                                <span class="radiobox"></span>
+                                                <span class="pay_logo"><img src="<?php echo sf_image('alipay.jpg'); ?>" alt="支付宝" /></span>
+                                            </div>
+                                            <div class="pay_item" data-id="wechatpay">
+                                                <span class="radiobox"></span>
+                                                <span class="pay_logo"><img src="<?php echo sf_image('wechatpay.jpg'); ?>" alt="微信" /></span>
+                                            </div>
+                                        </div>
+                                        <div class="shang_info">
+                                            <p>打开<span id="shang_pay_txt">支付宝</span>扫一扫，即可进行扫码打赏哦</p>
+                                        </div>
+                                    </div>
                                 </div>
 
                                 <div class="col-xs-12 col-sm-12 post-page-tags">
@@ -94,8 +114,23 @@
                 <?php comments_template(); ?>
             </div>
         </div>
-
         <!-- 侧栏 -->
         <?php get_sidebar(); ?>
     </div>
+
+<script type="text/javascript">
+    $(function() {
+        $(".pay_item").click(function() {
+            $(this).addClass('checked').siblings('.pay_item').removeClass('checked');
+            var dataid = $(this).attr('data-id');
+            var datastr = dataid+'_pay.png';
+            $(".shang_payimg img").attr("src", "<?php echo sf_image('"+datastr+"'); ?>");
+            $("#shang_pay_txt").text(dataid == "alipay" ? "支付宝" : "微信");
+        });
+    });
+    function dashangToggle() {
+        $(".hide_box").fadeToggle();
+        $(".shang_box").fadeToggle();
+    }
+</script>
 <?php get_footer(); ?>

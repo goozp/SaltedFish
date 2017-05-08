@@ -109,10 +109,12 @@ blockquote p{
     color: #B4C8CE;
     margin: 0;
     padding: 0;
+    transition: all 0.5s;
 }
 .navbar ul li a:hover, .navbar-brand:hover{
     color: #27ae60;
     background-color: #26424B;
+    transition: all 0.5s;
 }
 .navbar-brand img{
     margin: 5px 0;
@@ -478,6 +480,71 @@ body.full-content .post-body h4, .post-content h4 {
     word-break: break-all;
     word-wrap: break-word;
 }
+.post-share-pay{
+    text-align: center;
+    border-top: solid 1px #ecf0f1;
+    padding-top: 20px;
+}
+.thumbs_button{
+    width:125px;
+    text-align: center;
+    margin:5px auto;
+    height: 35px;
+    line-height: 35px;
+    background-color:#e67e22;
+    color:#fbfbfb;
+    text-decoration:none;
+    font-size:16px;
+    transition: all 0.3s;
+    border-radius: 5px 0 0 25px;
+    -webkit-border-radius: 5px 0 0 25px;
+    -moz-border-radius: 5px 0 0 25px;
+    -o-border-radius: 5px 0 0 25px;
+}
+.reward_button{
+    width:125px;
+    text-align: center;
+    margin:5px auto;
+    height: 35px;
+    line-height: 35px;
+    background-color:#27ae60;
+    color:#fbfbfb;
+    text-decoration:none;
+    font-size:16px;
+    transition: all 0.3s;
+    border-radius: 0 25px 5px 0;
+    -webkit-border-radius: 0 25px 5px 0;
+    -moz-border-radius: 0 25px 5px 0;
+    -o-border-radius: 0 25px 5px 0;
+}
+.thumbs_button:hover{
+    color: #0B2F20;
+    padding-left: 15px;
+}
+.reward_button:hover{
+    color: #0B2F20;
+    padding-right: 15px;
+}
+/* 打赏 start */
+.pay-content{width:80%;margin:200px auto;}
+.hide_box{z-index:999;filter:alpha(opacity=50);background:#666;opacity: 0.5;-moz-opacity: 0.5;left:0;top:0;height:99%;width:100%;position:fixed;display:none;}
+.shang_box{width:540px;height:540px;padding:40px 10px 10px 10px;background-color:#fff;border-radius:5px;position:fixed;z-index:1000;left:50%;top:50%;margin-left:-280px;margin-top:-280px;border:1px solid #dedede;display:none;}
+.shang_box img{border:none;border-width:0;}
+.shang_close{position:absolute; right: 10px; top:5px; display:inline-block;}
+.shang_logo{display:block;text-align:center;margin:20px auto;}
+.shang_tit{padding:0 130px;width: 100%;height: 75px;text-align: center;line-height:40px;color: #a3a3a3;font-size: 16px;background: url('public/images/cy-reward-title-bg.jpg');font-family: 'Microsoft YaHei';margin-top: 7px;margin-right:2px;}
+.shang_tit p{width:auto;color:#a3a3a3;text-align:center;font-size:16px;}
+.shang_payimg{width:140px;padding:10px;/*border:6px solid #EA5F00;**/margin:0 auto;border-radius:3px;height:140px;}
+.shang_payimg img{display:block;text-align:center;width:140px;height:140px; }
+.pay_explain{text-align:center;margin:10px auto;font-size:12px;color:#545454;}
+.radiobox{width: 16px;height: 16px;background: url('./public/images/radio2.jpg');display: block;float: left;margin-top: 5px;margin-right: 14px;}
+.checked .radiobox{background:url('./public/images/radio1.jpg');}
+.shang_payselect{text-align:center;margin:0 auto;margin-top:40px;cursor:pointer;height:60px;width:280px;}
+.shang_payselect .pay_item{display:inline-block;margin-right:10px;float:left;}
+.shang_info{clear:both;}
+.shang_info p,.shang_info a{color:#C3C3C3;text-align:center;font-size:12px;text-decoration:none;line-height:2em;}
+/* 打赏 end */
+
 /*
  * 评论
  */
