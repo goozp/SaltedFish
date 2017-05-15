@@ -54,12 +54,24 @@
                                     <br>
                                 </div>
 
-                                <div class="hidden-xs col-sm-12">
+                                <div class="hidden-xs shareThumbsButton col-sm-12">
                                     <div class="col-xs-12 col-sm-12 post-share-pay">
                                         <a href="javascript:void(0)" onclick="dashangToggle()" class="thumbs_button fa fa-coffee" title="打赏支持一下"> 打赏</a>
-                                        <a href="javascript:void(0)" class="reward_button fa fa-share-alt" title="分享"> 分享</a>
+                                        <a href="javascript:void(0)" onclick="showShare();" class="reward_button show_share fa fa-share-alt" title="分享"> 分享</a>
+                                    </div>
+                                    <div class="bdshareOuterbox" id="bdshareOuterbox">
+                                        <div class="bdsharebuttonbox">
+                                            <a href="#" class="bds_tsina fa fa-2x fa-weibo" data-cmd="tsina" title="分享到新浪微博"></a>
+                                            <a href="#" class="bds_weixin fa fa-2x fa-weixin" data-cmd="weixin" title="分享到微信"></a>
+                                            <a href="#" class="bds_sqq fa fa-2x fa-qq" data-cmd="sqq" title="分享到QQ好友"></a>
+                                            <a href="#" class="bds_fbook fa fa-2x fa-facebook" data-cmd="fbook" title="分享到Facebook"></a>
+                                            <a href="#" class="bds_twi fa fa-2x fa-twitter" data-cmd="twi" title="分享到Twitter"></a>
+                                            <a href="#" class="bds_copy fa fa-2x fa-copy" data-cmd="copy" title="分享到复制网址"></a>
+                                            <a href="#" class="bds_more fa fa-2x fa-plus" data-cmd="more"></a>
+                                        </div>
                                     </div>
                                 </div>
+
 
                                 <div class="pay-content">
                                     <div class="hide_box"></div>
@@ -120,6 +132,7 @@
 
 <script type="text/javascript">
     $(function() {
+        $("#bdshareOuterbox").hide();
         $(".pay_item").click(function() {
             $(this).addClass('checked').siblings('.pay_item').removeClass('checked');
             var dataid = $(this).attr('data-id');
@@ -132,5 +145,9 @@
         $(".hide_box").fadeToggle();
         $(".shang_box").fadeToggle();
     }
+    function showShare() {
+        $("#bdshareOuterbox").toggle(400);
+    }
 </script>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"24"},"share":{"bdCustomStyle":'123'}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
 <?php get_footer(); ?>

@@ -544,6 +544,45 @@ body.full-content .post-body h4, .post-content h4 {
 .shang_info{clear:both;}
 .shang_info p,.shang_info a{color:#C3C3C3;text-align:center;font-size:12px;text-decoration:none;line-height:2em;}
 /* 打赏 end */
+/* 百度分享 start */
+.shareThumbsButton{
+    position: relative;
+}
+.bdshareOuterbox{
+    position: absolute;
+    width: 330px;
+    height: 50px;
+    left: 50%;
+    top: -37%;
+}
+.bdsharebuttonbox{
+    width: 330px;
+    height: 40px;
+    padding: 2px 0 2px 20px;
+    background-color: #A8A8A8;
+    border-radius: 7px;
+    filter:alpha(opacity=80);
+    -moz-opacity:0.8;
+    opacity:0.8;
+}
+.bdsharebuttonbox a{
+    color: #607D8B;
+    text-align: center;
+    display: block;
+    width: 40px;
+    height: 40px;
+    float: left;
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+.bds_tsina:hover{color: #e74c3c}
+.bds_weixin:hover{color: #27ae60}
+.bds_sqq:hover{color: #c0392b}
+.bds_fbook:hover{color: #34495e}
+.bds_twi:hover{color: #3498db}
+.bds_copy:hover{color: #009688}
+.bds_more:hover{color: #3F51B5}
+/* 百度分享 end */
 
 /*
  * 评论
