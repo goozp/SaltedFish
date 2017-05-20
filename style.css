@@ -79,6 +79,8 @@ blockquote p{
     position: absolute;
 }
 
+.wp-smiley{height: 100% !important;max-height: 100% !important;} /* 修复表情样式 */
+
 /*
  * =====================================================================================================================
  *  默认小屏幕
@@ -700,6 +702,20 @@ body.full-content .post-body h4, .post-content h4 {
     height: 10px;
     width: 10px;
 }
+.showSmile{
+    float: right;
+    color: #7f8c8d;
+    cursor: pointer;
+}
+#smilelink{
+    margin: 3px;
+}
+#smilelink a{
+    cursor: pointer;
+}
+.showSmileDiv{
+    margin-bottom: 2px;
+}
 /*
  * footer
  */
@@ -769,6 +785,12 @@ footer {
     }
     .post-state{
         width: 96%;
+    }
+    .showSmileDiv{
+        margin-bottom: 0;
+        position: absolute;
+        right: 0;
+        top: 48%;
     }
 }
 

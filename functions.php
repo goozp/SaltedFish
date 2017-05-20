@@ -141,4 +141,3 @@ function addhighslideclass_replace ($content){
     $content = preg_replace($pattern, $replacement, $content);
     return $content;
 }
-

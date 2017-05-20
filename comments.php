@@ -89,14 +89,45 @@
                             <div class="col-xs-12 col-sm-6 input-group sf_comments_col">
                                 <span class="input-group-addon" id="sizing-addon2"><i class="fa fa-link"></i>&nbsp;  网址 &nbsp;</span>
                                 <input  class="form-control"  type="text" name="url" id="url"
-                                        placeholder="Example:http://yourwebsite.com" aria-describedby="sizing-addon2"
+                                        placeholder="http://yourwebsite.com" aria-describedby="sizing-addon2"
                                         value="<?php echo $comment_author_url; ?>">
                             </div>
                         </div>
                     </div>
                     <?php endif; ?>
 
+                    <div class="col-xs-12 col-sm-12 showSmileDiv">
+                        <i class="fa fa-2x fa-smile-o showSmile" onclick="showSmile();" title="表情"></i>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12" id="smilelink">
+                        <?php $smileUrl = sf_image('smilies/'); ?>
+                        <a onclick="javascript:grin(':?:')"><img src="<?php echo $smileUrl.'icon_question.gif'; ?>" title="疑问" alt="疑问" /></a>
+                        <a onclick="javascript:grin(':razz:')"><img src="<?php echo $smileUrl.'icon_razz.gif'?>" title="调皮" alt="调皮" /></a>
+                        <a onclick="javascript:grin(':sad:')"><img src="<?php echo $smileUrl.'icon_sad.gif'?>" title="伤心" alt="伤心" /></a>
+                        <a onclick="javascript:grin(':evil:')"><img src="<?php echo $smileUrl.'icon_evil.gif'?>" title="抠鼻" alt="抠鼻" /></a>
+                        <a onclick="javascript:grin(':!:')"><img src="<?php echo $smileUrl.'icon_exclaim.gif'?>" title="黑线" alt="黑线" /></a>
+                        <a onclick="javascript:grin(':smile:')"><img src="<?php echo $smileUrl.'icon_smile.gif'?>" title="微笑" alt="微笑" /></a>
+                        <a onclick="javascript:grin(':oops:')"><img src="<?php echo $smileUrl.'icon_redface.gif'?>" title="可爱" alt="可爱" /></a>
+                        <a onclick="javascript:grin(':grin:')"><img src="<?php echo $smileUrl.'icon_biggrin.gif'?>" title="奸笑" alt="奸笑" /></a>
+                        <a onclick="javascript:grin(':eek:')"><img src="<?php echo $smileUrl.'icon_surprised.gif'?>" title="震惊" alt="震惊" /></a>
+                        <a onclick="javascript:grin(':shock:')"><img src="<?php echo $smileUrl.'icon_eek.gif'?>" title="吓到了" alt="吓到了" /></a>
+                        <a onclick="javascript:grin(':???:')"><img src="<?php echo $smileUrl.'icon_confused.gif'?>" title="撇嘴" alt="撇嘴" /></a>
+                        <a onclick="javascript:grin(':cool:')"><img src="<?php echo $smileUrl.'icon_cool.gif'?>" title="酷" alt="酷" /></a>
+                        <a onclick="javascript:grin(':lol:')"><img src="<?php echo $smileUrl.'icon_lol.gif'?>" title="忍不住笑" alt="忍不住笑笑" /></a>
+                        <a onclick="javascript:grin(':mad:')"><img src="<?php echo $smileUrl.'icon_mad.gif'?>" title="狂骂" alt="狂骂" /></a>
+                        <a onclick="javascript:grin(':twisted:')"><img src="<?php echo $smileUrl.'icon_twisted.gif'?>" title="狂怒" alt="狂怒" /></a>
+                        <a onclick="javascript:grin(':roll:')"><img src="<?php echo $smileUrl.'icon_rolleyes.gif'?>" title="噢？" alt="噢？" /></a>
+                        <a onclick="javascript:grin(':wink:')"><img src="<?php echo $smileUrl.'icon_wink.gif'?>" title="鼓掌" alt="鼓掌" /></a>
+                        <!--<a onclick="javascript:grin(':idea:')"><img src="<php echo $smileUrl.'icon_idea.gif" title="贪" alt="贪" /></a>-->
+                        <a onclick="javascript:grin(':arrow:')"><img src="<?php echo $smileUrl.'icon_arrow.gif'?>" title="⊙﹏⊙b汗" alt="⊙﹏⊙b汗" /></a>
+                        <a onclick="javascript:grin(':neutral:')"><img src="<?php echo $smileUrl.'icon_neutral.gif'?>" title="鄙视" alt="鄙视" /></a>
+                        <a onclick="javascript:grin(':cry:')"><img src="<?php echo $smileUrl.'icon_cry.gif'?>" title="大哭" alt="大哭" /></a>
+                        <a onclick="javascript:grin(':mrgreen:')"><img src="<?php echo $smileUrl.'icon_mrgreen.gif'?>" title="嘿黑" alt="嘿黑" /></a>
+                    </div>
+
                     <div class="col-xs-12 col-sm-12 sf_comments_col">
+
                         <textarea class="form-control" name="comment" id="comment" rows="4" tabindex="4" placeholder="输入评论内容..."
                           onkeydown="if(event.ctrlKey&&event.keyCode==13){document.getElementById('submit').click();return false};"></textarea>
                     </div>
@@ -119,9 +150,44 @@
                 </div>
             </div>
         <?php endif; ?>
-
-        <script>
-            var addComment={moveForm:function(a,b,c,d){var e,f=this,g=f.I(a),h=f.I(c),i=f.I("cancel-comment-reply-link"),j=f.I("comment_parent"),k=f.I("comment_post_ID");if(g&&h&&i&&j){f.respondId=c,d=d||!1,f.I("wp-temp-form-div")||(e=document.createElement("div"),e.id="wp-temp-form-div",e.style.display="none",h.parentNode.insertBefore(e,h)),g.parentNode.insertBefore(h,g.nextSibling),$('body,html').animate( { scrollTop: $('#respond').offset().top - 150 }, 400);k&&d&&(k.value=d),j.value=b,i.style.display="",i.onclick=function(){var a=addComment,b=a.I("wp-temp-form-div"),c=a.I(a.respondId);if(b&&c)return a.I("comment_parent").value="0",b.parentNode.insertBefore(c,b),b.parentNode.removeChild(b),this.style.display="none",this.onclick=null,!1};try{f.I("comment").focus()}catch(l){}return!1}},I:function(a){return document.getElementById(a)}};
-        </script>
     </div>
 </div>
+
+<script type="text/javascript" language="javascript">
+    var addComment={moveForm:function(a,b,c,d){var e,f=this,g=f.I(a),h=f.I(c),i=f.I("cancel-comment-reply-link"),j=f.I("comment_parent"),k=f.I("comment_post_ID");if(g&&h&&i&&j){f.respondId=c,d=d||!1,f.I("wp-temp-form-div")||(e=document.createElement("div"),e.id="wp-temp-form-div",e.style.display="none",h.parentNode.insertBefore(e,h)),g.parentNode.insertBefore(h,g.nextSibling),$('body,html').animate( { scrollTop: $('#respond').offset().top - 150 }, 400);k&&d&&(k.value=d),j.value=b,i.style.display="",i.onclick=function(){var a=addComment,b=a.I("wp-temp-form-div"),c=a.I(a.respondId);if(b&&c)return a.I("comment_parent").value="0",b.parentNode.insertBefore(c,b),b.parentNode.removeChild(b),this.style.display="none",this.onclick=null,!1};try{f.I("comment").focus()}catch(l){}return!1}},I:function(a){return document.getElementById(a)}};
+    function grin(tag) {
+        var myField;
+        tag = ' ' + tag + ' ';
+        if (document.getElementById('comment') && document.getElementById('comment').type == 'textarea') {
+            myField = document.getElementById('comment');
+        } else {
+            return false;
+        }
+        if (document.selection) {
+            myField.focus();
+            sel = document.selection.createRange();
+            sel.text = tag;
+            myField.focus();
+        }
+        else if (myField.selectionStart || myField.selectionStart == '0') {
+            var startPos = myField.selectionStart;
+            var endPos = myField.selectionEnd;
+            var cursorPos = endPos;
+            myField.value = myField.value.substring(0, startPos)
+                + tag
+                + myField.value.substring(endPos, myField.value.length);
+            cursorPos += tag.length;
+            myField.focus();
+            myField.selectionStart = cursorPos;
+            myField.selectionEnd = cursorPos;
+        }
+        else {
+            myField.value += tag;
+            myField.focus();
+        }
+    }
+    $("#smilelink").hide();
+    function showSmile() {
+        $("#smilelink").slideToggle(400);
+    }
+</script>
