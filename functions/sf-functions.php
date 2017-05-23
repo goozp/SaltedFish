@@ -306,3 +306,67 @@ function sf_comment( $comment, $args, $depth ) {
         </li>
     <?php }
 }
+
+/*
+ * 回复邮件提醒功能（phpMailer smtp）
+ * */
+function comment_mail_notify($comment_id) {
+    $admin_notify = '1'; // admin 要不要收回复通知 ( '1'=要 ; '0'=不要 )
+    $admin_email = get_bloginfo ('admin_email'); // $admin_email 可改为你指定的 e-mail.
+    $comment = get_comment($comment_id);
+    $comment_author_email = trim($comment->comment_author_email);
+    $parent_id = $comment->comment_parent ? $comment->comment_parent : '';
+    global $wpdb;
+    if ($wpdb->query("Describe {$wpdb->comments} comment_mail_notify") == '')
+        $wpdb->query("ALTER TABLE {$wpdb->comments} ADD COLUMN comment_mail_notify TINYINT NOT NULL DEFAULT 0;");
+    if (($comment_author_email != $admin_email && isset($_POST['comment_mail_notify'])) || ($comment_author_email == $admin_email && $admin_notify == '1'))
+        $wpdb->query("UPDATE {$wpdb->comments} SET comment_mail_notify='1' WHERE comment_ID='$comment_id'");
+    $notify = $parent_id ? get_comment($parent_id)->comment_mail_notify : '0';
+    $spam_confirmed = $comment->comment_approved;
+    if ($parent_id != '' && $spam_confirmed != 'spam' && $notify == '1') {
+        //发送邮件的操作
+        $to = trim(get_comment($parent_id)->comment_author_email);
+        $subject = '您在 [' . get_option("blogname") . '] 的留言有了回应';
+        $message = '
+			<div style="background-color:#F8F8F8; border:1px solid #F0F8FB; color: #000; padding:0 10px; -moz-border-radius:10px; -webkit-border-radius:10px; -khtml-border-radius:10px; border-radius:10px;">
+				<p><strong>' . trim(get_comment($parent_id)->comment_author) . '</strong>，您好！</p>
+				<p>您曾在《' . get_the_title($comment->comment_post_ID) . '》的留言：<br />'
+            . trim(get_comment($parent_id)->comment_content) . '</p>
+				<p><strong>' . trim($comment->comment_author) . '</strong> 给您的回应:<br />'
+            . trim($comment->comment_content) . '<br /></p>
+				<p>您可以点击 <a href="' . htmlspecialchars(get_comment_link($parent_id)) . '">查看完整的回应内容</a>。</p>
+				<p>欢迎再度光临 <a href="' . get_option('home') . '">' . get_option('blogname') . '</a>！</p>
+				<p>(此邮件由系统发出，请勿回复。)</p>
+			</div>';
+        header("content-type:text/html;charset=utf-8");
+        ini_set("magic_quotes_runtime",0);
+        require get_template_directory().'/libraries/PHPMailer/class.phpmailer.php';
+        try {
+            $mail = new PHPMailer(true);
+            $mail->IsSMTP();
+            $mail->CharSet='UTF-8';
+            $mail->SMTPAuth = true;
+            $emailPort = sf_setting('email-port');
+            if ($emailPort == '465'){
+                $mail->SMTPSecure = 'ssl';
+            }
+            $mail->Port = $emailPort;
+            $mail->Host = sf_setting('email-smtp');//邮箱smtp地址
+            $mail->Username = sf_setting('email-name');//你的邮箱账号
+            $mail->Password = sf_setting('email-password');//你的邮箱密码
+            $mail->From = $mail->Username;//你的邮箱账号
+            $mail->FromName = get_option('blogname');
+            $to = $to;
+            $mail->AddAddress($to);
+            $mail->Subject = $subject;
+            $mail->Body = $message;
+            $mail->WordWrap = 80;
+            //$mail->AddAttachment("f:/test.png"); //可以添加附件
+            $mail->IsHTML(true);
+            $mail->Send();
+        } catch (phpmailerException $e) {
+            // echo "邮件发送失败：".$e->errorMessage(); //测试的时候可以去掉此行的注释
+        }
+    };
+}
+add_action('comment_post', 'comment_mail_notify');

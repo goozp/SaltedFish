@@ -93,6 +93,7 @@ class SaltedFish_setting {
                 'key'   => 'email-port',
                 'type'  => 'radio',
                 'value' => array(
+                    '80' => '80',
                     '25' => '25',
                     '465' => '465',
                 ),
