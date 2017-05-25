@@ -27,7 +27,7 @@
                     </ul>
                     <div class="comments-data-footer clearfix">
                         <?php if ( 'open' != $post->comment_status ) : ?>
-                            <div class="alert alert-warning" role="alert">评论已关闭！</div>
+                            <div class="alert alert-warning comment-closed" role="alert">评论已关闭！</div>
                         <?php else : ?>
                             <div class="comment-topnav text-center"><?php paginate_comments_links( 'prev_text=«&next_text=»' ); ?></div>
                         <?php endif; ?>
@@ -36,7 +36,7 @@
             </div>
         <?php else : ?>
             <?php if ( 'open' != $post->comment_status ) : ?>
-                <div class="alert alert-warning" role="alert">评论已关闭！</h4></div>
+                <div class="alert alert-warning comment-closed" role="alert">评论已关闭！</h4></div>
             <?php endif; ?>
         <?php endif; ?>
 
