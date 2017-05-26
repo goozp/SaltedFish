@@ -1,0 +1,46 @@
+body{
+    background:#ecf0f1;
+}
+.logo h2{
+    font-size:120px;
+    color:#8F8E8C;
+    text-align:center;
+    margin:70px 0 0 0;
+    text-shadow:1px 1px 6px #fff;
+}
+.logo p{
+    color:rgb(228, 146, 162);
+    font-size:15px;
+    margin-top:1px;
+    text-align:center;
+}
+.logo p span{
+    color:lightgreen;
+}
+.sub a{
+    color:white;
+    background:#8F8E8C;
+    text-decoration:none;
+    padding:5px 80px;
+    font-size:13px;
+    font-family: arial, serif;
+    font-weight:bold;
+    -webkit-border-radius:3em;
+    -moz-border-radius:.1em;
+    -border-radius:.1em;
+}
+@media (min-width: 768px) {
+    .logo{
+        margin-top:50px;
+    }
+    .logo h2{
+        font-size:200px;
+        margin-bottom:1px;
+    }
+    .logo p{
+        font-size:20px;
+    }
+    .sub a{
+        padding:7px 120px;
+    }
+}

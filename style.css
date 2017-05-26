@@ -113,10 +113,32 @@ blockquote p{
     padding: 0;
     transition: all 0.5s;
 }
-.navbar ul li a:hover, .navbar-brand:hover{
+.navbar ul li a:hover, .navbar ul li a:visited:hover{
     color: #27ae60;
     background-color: #26424B;
     transition: all 0.5s;
+}
+.navbar ul li a:visited{
+    background-color: #1C1F20;
+}
+.navbar ul li:hover .sub-menu{
+    visibility: visible;
+    display: block;
+}
+.navbar .sub-menu{
+    display: none;
+    visibility: hidden;
+    list-style: none;
+}
+.navbar .sub-menu li a{
+    padding: 0 10px;
+    display: block;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+}
+.navbar .sub-menu li a:hover{
+    background-color: #26424B;
 }
 .navbar-brand img{
     margin: 5px 0;

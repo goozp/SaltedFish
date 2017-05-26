@@ -36,7 +36,11 @@ function sf_scripts_with_jquery()
     // 顶部loading css
     wp_register_style( 'pace', get_template_directory_uri() . '/public/css/pace-theme-flash.css' );
     wp_enqueue_style( 'pace' );
-
+    //404 css
+    if ( is_404() ) {
+        wp_register_style( '404', get_template_directory_uri() . '/public/css/404.css' );
+        wp_enqueue_style( '404' );
+    }
 
 
     // JQuery js
@@ -59,6 +63,18 @@ function sf_scripts_with_jquery()
         wp_register_style( 'highslide-css', get_template_directory_uri() . '/public/highslide/highslide.css', null, '5.0' );
         wp_enqueue_style( 'highslide-css' );
         wp_enqueue_script( 'highslide-js', get_template_directory_uri() . '/public/highslide/highslide-with-gallery.min.js', null, '5.0', true );
+    }
+    //博客历程(时间树模板)
+    if( is_page_template( 'templates/treeTime.php' ) ){
+        wp_enqueue_script( 'sf-tree', sf_script( 'tree.js' ), null, SF_VERSION, false );
+        wp_register_style( 'tree', get_template_directory_uri() . '/public/css/tree.css', null, SF_VERSION );
+        wp_enqueue_style( 'tree' );
+    }
+    //归档模板页archives.js archives.css
+    if( is_page_template( 'templates/archives.php' ) ){
+        wp_enqueue_script( 'sf-archives', sf_script( 'archives.js' ), null, SF_VERSION, false );
+        wp_register_style( 'archives', get_template_directory_uri() . '/public/css/archives.css', null, SF_VERSION  );
+        wp_enqueue_style( 'archives' );
     }
 }
 add_action( 'wp_enqueue_scripts', 'sf_scripts_with_jquery' );

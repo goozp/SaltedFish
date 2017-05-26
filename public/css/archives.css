@@ -1,0 +1,26 @@
+.archives-title{
+
+}
+#archives{
+    font-size: 16px;
+}
+#al_expand_collapse{
+    float: right;
+    background-color: #27ae60;
+    border-color: #27ae60;
+    font-size: 14px;
+    padding: 2px 6px;
+}
+#al_expand_collapse:hover{
+    filter:Alpha(Opacity=60);
+    opacity:0.8;
+}
+.al_mon_list ul{
+    margin: 10px 0;
+}
+.al_year{
+    margin-top: 20px;
+}
+.al_mon{
+    margin-top: 10px;
+}

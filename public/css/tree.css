@@ -1,0 +1,86 @@
+.tree-body h2{
+    font-family: 'Microsoft Yahei', '微软雅黑';
+    text-align: center;
+    font-weight: bold;
+}
+
+ul.timeline {
+    list-style-type: none;
+    background: url("../images/version_line.png") repeat-y scroll 120px 0 transparent;
+    margin: 50px 0;
+    padding: 0;
+}
+ul.timeline li.tree-top {
+    position: relative;
+    margin-bottom: 40px;
+}
+
+ul.timeline li.tree-bottom {
+    position: relative;
+    margin-top: 20px;
+}
+
+ul.timeline li.tree-top .version {
+    position: absolute;
+    width: 290px;
+    text-align: right;
+    left: -200px;
+    top: 5px;
+    font-size: 18px;
+    line-height: 50px;
+    color: #94e2d0;
+    overflow: hidden;
+}
+ul.timeline li .number {
+    position: absolute;
+    background: url("../images/version_dot.png") no-repeat scroll 0 0 transparent;
+    width: 56px;
+    height: 56px;
+    left: 97px;
+    line-height: 56px;
+    text-align: center;
+    color: #fff;
+    font-size: 18px;
+}
+ul.timeline li.alt .number {
+    background-image: url("../images/version_dot_alt.png");
+}
+
+ul.timeline li.tree-bottom .number{
+    position: absolute;
+    background: url("../images/version_dot.png") no-repeat scroll 0 0 transparent;
+    top: 50px;
+    width: 56px;
+    height: 56px;
+    left: 97px;
+    line-height: 56px;
+    text-align: center;
+    color: #fff;
+    font-size: 18px;
+}
+ul.timeline li.tree-bottom .version{
+    position: absolute;
+    width: 290px;
+    text-align: right;
+    left: -200px;
+    top: 35px;
+    font-size: 18px;
+    line-height: 50px;
+    color: #94e2d0;
+    overflow: hidden;
+}
+
+ul.timeline li .content {
+    margin-left: 180px;
+}
+ul.timeline li .content p {
+    background-color: #1abc9c;
+    border-radius : 5px;
+    padding: 30px;
+    color: #fff;
+    font-size: 15px;
+    line-height: 20px;
+}
+ul.timeline li.alt .content p {
+    background-color: #16a085;
+}
