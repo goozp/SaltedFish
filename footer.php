@@ -8,7 +8,9 @@
                     </div>
                 <div class="col-xs-12 col-sm-12">
                     <ul class="footer_links">
-                        <?php wp_list_bookmarks('title_li=&categorize=0&orderby=rand&show_images=0'); ?>
+                        <?php
+                        $indexFriedLink = sf_setting('index-fried-link');
+                        wp_list_bookmarks("category_name={$indexFriedLink}&title_li=&categorize=0&orderby=rand&show_images=0"); ?>
                     </ul>
                 </div>
             </div>

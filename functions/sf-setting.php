@@ -40,6 +40,20 @@ class SaltedFish_setting {
                 'text'  => '只显示特色图片',
                 'label' => '默认没有特色图片时缩略图会显示文章中插入的图片，勾选后，首页和归档页面只显示特色图片的缩略图，文章中插入的图片缩略图将不会显示。'
             ),
+            array(
+                'title' => '友链——首页友链分类目录名称',
+                'key'   => 'index-fried-link',
+                'type'  => 'input',
+                'value' => false,
+                'label' => '首页友链处，友链模板页根据名称输出友链，不设置将无效。例如:首页友链'
+            ),
+            array(
+                'title' => '友链——内页友链分类目录名称',
+                'key'   => 'inside-friend-link',
+                'type'  => 'input',
+                'value' => false,
+                'label' => '友链模板页根据名称输出友链，不设置将无效。例如:内页友链'
+            ),
         );
 
         $this->defaultsContent = array(
