@@ -76,6 +76,11 @@ function sf_scripts_with_jquery()
         wp_register_style( 'archives', get_template_directory_uri() . '/public/css/archives.css', null, SF_VERSION  );
         wp_enqueue_style( 'archives' );
     }
+    //链接收藏模板
+    if( is_page_template( 'templates/collectLink.php' ) ) {
+        wp_register_style( 'archives', get_template_directory_uri() . '/public/css/collectLink.css', 'style', SF_VERSION  );
+        wp_enqueue_style( 'archives' );
+    }
 }
 add_action( 'wp_enqueue_scripts', 'sf_scripts_with_jquery' );
 

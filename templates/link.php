@@ -31,12 +31,12 @@ get_header(); ?>
                 <div class="row jp_page_post">
                     <div class="col-xs-12 col-sm-12 post-header"">
                     <h2 class="post-title"><?php _e('对不起,页面不存在'); ?></h2>
+                    </div>
                 </div>
             </div>
+            <?php endif; ?>
         </div>
-        <?php endif; ?>
     </div>
-</div>
 <!-- 侧栏 -->
 <?php get_sidebar(); ?>
 </div>

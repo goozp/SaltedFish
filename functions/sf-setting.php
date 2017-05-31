@@ -28,7 +28,6 @@ class SaltedFish_setting {
                 'value' => false,
                 'label' => '多个关键词请用英文逗号隔开'
             ),
-
         );
 
         $this->defaultsTheme = array(
@@ -54,9 +53,13 @@ class SaltedFish_setting {
                 'value' => false,
                 'label' => '友链模板页根据名称输出友链，不设置将无效。例如:内页友链'
             ),
-        );
-
-        $this->defaultsContent = array(
+            array(
+                'title' => '链接收藏页——要展示的分类目录名称',
+                'key'   => 'collection-links',
+                'type'  => 'textarea',
+                'value' => false,
+                'label' => '链接收藏页要展示的分类目录名称，多个关键词请用英文逗号隔开。例如:内页友链,科技人文'
+            ),
             array(
                 'title' => '侧栏——个人名称展示',
                 'key'   => 'author-name',
@@ -91,6 +94,100 @@ class SaltedFish_setting {
                 'type'  => 'textarea',
                 'value' => false,
                 'label' => '对你的网站进行描述'
+            ),
+        );
+
+        $this->defaultsContent = array(
+            array(
+                'title' => '首页轮播图1——标题',
+                'key'   => 'index-carousel-title1',
+                'type'  => 'input',
+                'value' => false,
+                'label' => '首页轮播图1标题'
+            ),
+            array(
+                'title' => '首页轮播图1——链接',
+                'key'   => 'index-carousel-url1',
+                'type'  => 'input',
+                'value' => false,
+                'label' => '首页轮播图1链接'
+            ),
+            array(
+                'title' => '首页轮播图1——图片url',
+                'key'   => 'index-carousel-img1',
+                'type'  => 'input',
+                'value' => false,
+                'label' => '首页轮播图1图片url'
+            ),
+            array(
+                'title' => '首页轮播图2——标题',
+                'key'   => 'index-carousel-title2',
+                'type'  => 'input',
+                'value' => false,
+                'label' => '首页轮播图2标题'
+            ),
+            array(
+                'title' => '首页轮播图2——链接',
+                'key'   => 'index-carousel-url2',
+                'type'  => 'input',
+                'value' => false,
+                'label' => '首页轮播图2链接'
+            ),
+            array(
+                'title' => '首页轮播图2——图片url',
+                'key'   => 'index-carousel-img2',
+                'type'  => 'input',
+                'value' => false,
+                'label' => '首页轮播图2图片url'
+            ),
+            array(
+                'title' => '首页轮播图3——标题',
+                'key'   => 'index-carousel-title3',
+                'type'  => 'input',
+                'value' => false,
+                'label' => '首页轮播图3标题'
+            ),
+            array(
+                'title' => '首页轮播图3——链接',
+                'key'   => 'index-carousel-url3',
+                'type'  => 'input',
+                'value' => false,
+                'label' => '首页轮播图3链接'
+            ),
+            array(
+                'title' => '首页轮播图3——图片url',
+                'key'   => 'index-carousel-img3',
+                'type'  => 'input',
+                'value' => false,
+                'label' => '首页轮播图3图片url'
+            ),
+            array(
+                'title' => '首页专题1url',
+                'key'   => 'index-subject1',
+                'type'  => 'input',
+                'value' => false,
+                'label' => '首页专题1url'
+            ),
+            array(
+                'title' => '首页专题2url',
+                'key'   => 'index-subject2',
+                'type'  => 'input',
+                'value' => false,
+                'label' => '首页专题2url'
+            ),
+            array(
+                'title' => '首页工具栏1url',
+                'key'   => 'index-tool1',
+                'type'  => 'input',
+                'value' => false,
+                'label' => '首页工具栏1url'
+            ),
+            array(
+                'title' => '首页工具栏2url',
+                'key'   => 'index-tool2',
+                'type'  => 'input',
+                'value' => false,
+                'label' => '首页工具栏2url'
             ),
         );
 

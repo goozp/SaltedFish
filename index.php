@@ -29,25 +29,35 @@
                     </ol>
                     <!-- Wrapper for slides -->
                     <div class="carousel-inner" role="listbox">
+                        <?php
+                        $defaultImg = sf_image('timg.jpg');
+
+                        sf_setting('index-carousel-title1');
+                        sf_setting('index-carousel-url1');
+                        sf_setting('index-carousel-img1');
+                        ?>
                         <div class="item active">
-                            <img src="<?php echo sf_image('timg.jpg'); ?>" alt="...">
+                            <img src="<?php echo sf_setting('index-carousel-img1')?sf_setting('index-carousel-img1'):$defaultImg; ?>" alt="...">
                             <div class="carousel-caption">
-                                <h3>第一张</h3>
-                                <p>这是第一张的介绍</p>
+                                <a href="<?php echo sf_setting('index-carousel-url1')?sf_setting('index-carousel-url1'):'#'; ?>">
+                                    <h4><?php echo sf_setting('index-carousel-title1'); ?></h4>
+                                </a>
                             </div>
                         </div>
                         <div class="item">
-                            <img src="<?php echo sf_image('timg.jpg'); ?>" alt="...">
+                            <img src="<?php echo sf_setting('index-carousel-img2')?sf_setting('index-carousel-img2'):$defaultImg; ?>" alt="...">
                             <div class="carousel-caption">
-                                <h3>第二张</h3>
-                                <p>这是第二张的介绍</p>
+                                <a href="<?php echo sf_setting('index-carousel-url2')?sf_setting('index-carousel-url2'):'#'; ?>">
+                                    <h4><?php echo sf_setting('index-carousel-title2'); ?></h4>
+                                </a>
                             </div>
                         </div>
                         <div class="item">
-                            <img src="<?php echo sf_image('timg.jpg'); ?>" alt="...">
+                            <img src="<?php echo sf_setting('index-carousel-img3')?sf_setting('index-carousel-img3'):$defaultImg; ?>" alt="...">
                             <div class="carousel-caption">
-                                <h3>第三张</h3>
-                                <p>这是第三张的介绍</p>
+                                <a href="<?php echo sf_setting('index-carousel-url3')?sf_setting('index-carousel-url3'):'#'; ?>">
+                                    <h4><?php echo sf_setting('index-carousel-title3'); ?></h4>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -82,13 +92,13 @@
                     <div class="col-xs-12 col-sm-6 index-hot-widget index-hot-article">
                         <h4><span><i class="fa fa-fire"></i>&nbsp;热评文章</span></h4>
                         <ul class="">
-                            <?php echo get_most_viewed(); ?>
+                            <?php sf_most_viewed(); ?>
                         </ul>
                     </div>
                     <div class="col-xs-12 col-sm-6 index-hot-widget index-hot-push">
-                        <h4><span><i class="fa fa-fire"></i>&nbsp;博主推荐</span></h4>
+                        <h4><span><i class="fa fa-fire"></i>&nbsp;随机文章</span></h4>
                         <ul class="">
-                            <?php echo get_most_viewed(); ?>
+                            <?php random_posts(); ?>
                         </ul>
                     </div>
                 </div>
@@ -151,7 +161,7 @@
                                                         </li>
                                                         <li class="inline-li">
                                                             <i class="fa fa-eye"></i>
-                                                            <?php get_post_views($post->ID); ?> 阅读
+                                                            <?php echo sf_views(); ?> 阅读
                                                         </li>
                                                         <li class="inline-li">
                                                             <i class="fa fa-comments-o"></i>

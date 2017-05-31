@@ -8,39 +8,33 @@
  **/
 
 /**
- * 阅读量函数
- * 调用方法: get_post_views($post -> ID);
- * @param $post_id
+ * 文章阅读量
  */
-function get_post_views ($post_id) {
-    $count_key = 'views';
-    $count = get_post_meta($post_id, $count_key, true);
-    if ($count == '') {
-        delete_post_meta($post_id, $count_key);
-        add_post_meta($post_id, $count_key, '0');
-        $count = '0';
-    }else{
-        if ( $count > 1000 ){
-            $count = sprintf( "%.2fk", $count / 1000 );
-        }
+function sf_views() {
+    if ( function_exists( 'the_views' ) ) {
+        global $post;
+        echo sf_views_count(); ?>
+        <?php
     }
-    echo number_format_i18n($count);
 }
-function set_post_views () {
+
+/**
+ * 文章阅读量查询
+ * @param $post_id
+ * @return mixed|string
+ */
+function sf_views_count( $post_id = null ) {
     global $post;
-    $post_id = $post -> ID;
-    $count_key = 'views';
-    $count = get_post_meta($post_id, $count_key, true);
-    if (is_single() || is_page()) {
-        if ($count == '') {
-            delete_post_meta($post_id, $count_key);
-            add_post_meta($post_id, $count_key, '0');
-        } else {
-            update_post_meta($post_id, $count_key, $count + 1);
-        }
+    if ( ! $post_id ) {
+        $post_id = $post->ID;
     }
+    $post_views = get_post_meta( $post_id, 'views', true );
+    if ( $post_views > 1000 ) {
+        $post_views = sprintf( "%.2fk", $post_views / 1000 );
+    }
+    return $post_views;
 }
-add_action('get_header', 'set_post_views');
+
 
 /**
  * 文章截取
@@ -183,7 +177,7 @@ function sf_pagenavi( $space = 5 ) {
 /**
  * 获得热评文章
  **/
-function get_most_viewed($posts_num=7, $days=300){
+function sf_most_viewed($posts_num=7, $days=300){
     global $wpdb;
     $sql = "SELECT ID , post_title , comment_count
             FROM $wpdb->posts
@@ -194,6 +188,31 @@ function get_most_viewed($posts_num=7, $days=300){
     $output = "";
     foreach ($posts as $post){
         $output .= "\n<li><i class=\"fa fa-angle-double-right\"></i><a href= \"".get_permalink($post->ID)."\" rel=\"bookmark\" title=\"".$post->post_title." (".$post->comment_count."条评论)\" >". $post->post_title."</a></li>";
+    }
+    echo $output;
+}
+
+/**
+ * 获得随机文章
+ */
+function random_posts($posts_num=7,$before='<li><i class="fa fa-angle-double-right"></i>',$after='</li>'){
+    global $wpdb;
+    $sql = "SELECT ID, post_title,guid
+			FROM $wpdb->posts
+			WHERE post_status = 'publish' ";
+    $sql .= "AND post_title != '' ";
+    $sql .= "AND post_password ='' ";
+    $sql .= "AND post_type = 'post' ";
+    $sql .= "ORDER BY RAND() LIMIT 0 , $posts_num ";
+    $randposts = $wpdb->get_results($sql);
+    $output = '';
+    foreach ($randposts as $randpost) {
+        $post_title = stripslashes($randpost->post_title);
+        $permalink = get_permalink($randpost->ID);
+        $output .= $before.'<a href="'
+            . $permalink . '"  rel="bookmark" title="';
+        $output .= $post_title . '">' . $post_title . '</a>';
+        $output .= $after;
     }
     echo $output;
 }

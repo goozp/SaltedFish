@@ -1,0 +1,56 @@
+body{
+    background-color: #E7EFF4;
+    height: 100%;
+    width: 100%;
+}
+html,body{
+    height:100%;
+}
+.sf_collect_link{
+
+}
+.collectionLinkDiv{
+
+    background-color: #FFFFFF;
+}
+.collectionLinkDiv h2{
+    font-size: 22px;
+    color: #518193;
+    border-bottom: 1px solid #E7EFF4;
+    border-left: 2px solid #518193;
+    padding: 7px 10px;
+}
+
+.collectionLinkDiv ul{
+    width: 100%;
+    list-style: none;
+    display: inline-block;
+
+}
+.collectionLinkDiv ul li{
+    color: #A2A8A2;
+    font-size: 13px;
+    display: block;
+    height: 80px;
+    width: 16.7%;
+    float: left;
+    margin: 10px;
+    padding: 10px;
+    -webkit-transition: all 0.35s ease-in-out;
+    -moz-transition: all 0.35s ease-in-out;
+    transition: all 0.35s ease-in-out;
+}
+.collectionLinkDiv ul li:hover{
+    background-color: #EDF5FA;
+    border-radius: 5px;
+    color: #2C65B9;
+    cursor: pointer;
+}
+
+.collectionLinkDiv ul li a{
+    display: inline-block;
+    font-size: 16px;
+    height: 30px;
+    width: 100%;
+}
+
