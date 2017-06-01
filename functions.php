@@ -162,3 +162,35 @@ function addhighslideclass_replace ($content){
     $content = preg_replace($pattern, $replacement, $content);
     return $content;
 }
+
+/* 支持https */
+function replacehttp($content){
+    if( is_ssl() ){
+        $content = str_replace('http://files.gzpblog.com/wp/', 'https://files.gzpblog.com/wp/', $content);
+    }
+    return $content;
+}
+add_filter('the_content', 'replacehttp');
+
+/* 文章外链跳转添加过度加载页面 */
+add_filter('the_content','link_jump',999);
+function link_jump($content){
+    preg_match_all('/<a(.*?)href="(.*?)"(.*?)>/',$content,$matches);
+    if($matches){
+        foreach($matches[2] as $val){
+            if(strpos($val,'://')!==false && strpos($val,home_url())===false && !preg_match('/\.(jpg|jepg|png|ico|bmp|gif|tiff)/i',$val) && !preg_match('/(ed2k|thunder|Flashget|flashget|qqdl):\/\//i',$val)){
+                $content=str_replace("href=\"$val\"", "href=\"".home_url()."/go/?url=".base64_encode($val)."\" rel=\"nofollow\"",$content);
+            }
+        }
+    }
+    return $content;
+}
+
+/* 评论者链接跳转 */
+function Bing_comment_author_link(){
+    $url = get_comment_author_url();
+    $author = get_comment_author();
+    if( empty( $url ) || $url == 'http://' ) return $author;
+    return "<a href='".home_url()."/go/?url=$url' rel='external nofollow' target='_blank' class='url'>$author</a>";
+}
+add_filter( 'get_comment_author_link', 'Bing_comment_author_link', 2 );
