@@ -489,7 +489,9 @@ blockquote p{
     font-size: 15px;
     line-height: 27px;
 }
-
+.post-content ul, .post-content ol{
+    padding-left: 20px;
+}
 .post-content img{
     max-width: 100%;
     height: auto;
@@ -759,15 +761,16 @@ body.full-content .post-body h4, .post-content h4 {
 /* 专题页样式 */
 .sf_subject_post_body h2{
     color: #ecf0f1;
+    font-size: 22px;
     padding: 5px 0 5px 10px;
     border-left: solid 3px #e67e22;
-    background: -webkit-linear-gradient(left,#27ae60, #ffffff);
-    background: -o-linear-gradient(left,#27ae60, #ffffff);
-    background: -moz-linear-gradient(left,#27ae60, #ffffff);
-    background: linear-gradient(left,#27ae60, #ffffff);
+    background: -webkit-linear-gradient(left,#27ae60, #ffffff, #ffffff);
+    background: -o-linear-gradient(left,#27ae60, #ffffff, #ffffff);
+    background: -moz-linear-gradient(left,#27ae60, #ffffff, #ffffff);
+    background: linear-gradient(left,#27ae60, #ffffff, #ffffff);
 }
 .sf_subject_post_body h3{
-    padding-top: 10px;
+    font-size: 20px;
     padding-bottom: 5px;
     border-bottom: solid 1px #ECF0F1;
 }

@@ -5,18 +5,22 @@
         <div class="col-xs-12 col-lg-9 left-body" >
             <!-- 专题 -->
             <div class="col-xs-12 col-sm-3 index-subject">
-                <div class="col-xs-12 col-sm-12 index-subject-block index-subject-block-1">
-                    <div class="subject-tag subject-tag-1">
-                        <span>专题</span>
+                <a href="<?php echo sf_setting('index-subject1')?sf_setting('index-subject1'):'#'; ?>">
+                    <div class="col-xs-12 col-sm-12 index-subject-block index-subject-block-1">
+                        <div class="subject-tag subject-tag-1">
+                            <span>专题</span>
+                        </div>
+                        <span class="subject-words"></span>
                     </div>
-                    <span class="subject-words"></span>
-                </div>
-                <div class="col-xs-12 col-sm-12 index-subject-block index-subject-block-2">
-                    <div class="subject-tag subject-tag-2">
-                        <span>专题</span>
+                </a>
+                <a href="<?php echo sf_setting('index-subject2')?sf_setting('index-subject2'):'#'; ?>">
+                    <div class="col-xs-12 col-sm-12 index-subject-block index-subject-block-2">
+                        <div class="subject-tag subject-tag-2">
+                            <span>专题</span>
+                        </div>
+                        <span class="subject-words"></span>
                     </div>
-                    <span class="subject-words"></span>
-                </div>
+                </a>
             </div>
             <!-- 轮播图 -->
             <div class="col-xs-12 col-sm-9 index-carousel">
@@ -31,15 +35,11 @@
                     <div class="carousel-inner" role="listbox">
                         <?php
                         $defaultImg = sf_image('timg.jpg');
-
-                        sf_setting('index-carousel-title1');
-                        sf_setting('index-carousel-url1');
-                        sf_setting('index-carousel-img1');
                         ?>
                         <div class="item active">
                             <img src="<?php echo sf_setting('index-carousel-img1')?sf_setting('index-carousel-img1'):$defaultImg; ?>" alt="...">
                             <div class="carousel-caption">
-                                <a href="<?php echo sf_setting('index-carousel-url1')?sf_setting('index-carousel-url1'):'#'; ?>">
+                                <a href="<?php echo sf_setting('index-carousel-url1')?sf_setting('index-carousel-url1'):'#'; ?>" target="_blank">
                                     <h4><?php echo sf_setting('index-carousel-title1'); ?></h4>
                                 </a>
                             </div>
@@ -47,7 +47,7 @@
                         <div class="item">
                             <img src="<?php echo sf_setting('index-carousel-img2')?sf_setting('index-carousel-img2'):$defaultImg; ?>" alt="...">
                             <div class="carousel-caption">
-                                <a href="<?php echo sf_setting('index-carousel-url2')?sf_setting('index-carousel-url2'):'#'; ?>">
+                                <a href="<?php echo sf_setting('index-carousel-url2')?sf_setting('index-carousel-url2'):'#'; ?>" target="_blank">
                                     <h4><?php echo sf_setting('index-carousel-title2'); ?></h4>
                                 </a>
                             </div>
@@ -55,7 +55,7 @@
                         <div class="item">
                             <img src="<?php echo sf_setting('index-carousel-img3')?sf_setting('index-carousel-img3'):$defaultImg; ?>" alt="...">
                             <div class="carousel-caption">
-                                <a href="<?php echo sf_setting('index-carousel-url3')?sf_setting('index-carousel-url3'):'#'; ?>">
+                                <a href="<?php echo sf_setting('index-carousel-url3')?sf_setting('index-carousel-url3'):'#'; ?>" target="_blank">
                                     <h4><?php echo sf_setting('index-carousel-title3'); ?></h4>
                                 </a>
                             </div>
@@ -81,10 +81,10 @@
             <div class="col-xs-12 col-sm-12 index-hot">
                 <div class="col-xs-12 col-sm-3 index-hot-tools hidden-xs">
                     <div class="col-xs-12 hot-tools-button hot-tools-button-1">
-                        <a href="#">链接收藏</a>
+                        <a href="<?php echo sf_setting('index-tool1')?sf_setting('index-tool1'):'#'; ?>">链接收藏</a>
                     </div>
                     <div class="col-xs-12 hot-tools-button hot-tools-button-2">
-                        <a href="#">我的作品</a>
+                        <a href="<?php echo sf_setting('index-tool2')?sf_setting('index-tool2'):'#'; ?>">我的作品</a>
                     </div>
                     <div class="col-xs-12 hot-tools-img"></div>
                 </div>

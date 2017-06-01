@@ -11,7 +11,7 @@ get_header(); ?>
                 <h2>博客历程</h2>
                 <ul class="timeline">
                     <li class="tree-top">
-                        <div class="version">2017.05.26</div>
+                        <div class="version">2017.06.01</div>
                         <div class="number">9</div>
                         <div class="content">
                             <p>
