@@ -43,6 +43,15 @@
             <span>
                 Copyright © 2017 <a id="footer_name" href="<?php bloginfo( 'url' ); ?>" target="_blank"><?php bloginfo( 'name' ); ?></a>
                 All Rights Reserved. Jumping theme powered by <a href="http://www.gzpblog.com" target="_blank" rel="nofollow">guo</a>.
+                &nbsp|&nbsp
+                <a href="http://www.miitbeian.gov.cn/" target="_blank" rel="nofollow">粤ICP备16013442号</a>
+                &nbsp|&nbsp
+                <a href="/sitemap.xml" target="_blank">网站地图</a>
+                &nbsp|&nbsp
+                本站运行于 <img src="<?php echo sf_image('aliyun.png'); ?>" height="30px" />
+                &nbsp|&nbsp
+                <!-- cnzz统计 -->
+                <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1257421693'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s95.cnzz.com/z_stat.php%3Fid%3D1257421693%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
             </span>
         </div>
     </div>
@@ -52,7 +61,20 @@
     <a id="back-to-top" title="返回顶部"></a>
 </div>
 
-
+<script>
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        }
+        else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
 <?php wp_footer(); ?>
     <?php  if ( is_single() ) {?>
     <script type="text/javascript">
