@@ -163,6 +163,12 @@ function addhighslideclass_replace ($content){
     return $content;
 }
 
+/* 新发表文章,修改文章时清空 zww_archives_list归档页缓存 */
+function clear_db_cache_archives_list() {
+    update_option('zww_db_cache_archives_list', '');
+}
+add_action('save_post', 'clear_db_cache_archives_list');
+
 /* 支持https */
 function replacehttp($content){
     if( is_ssl() ){
