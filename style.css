@@ -632,6 +632,11 @@ body.full-content .post-body h4, .post-content h4 {
 .bds_more:hover{color: #3F51B5}
 /* 百度分享 end */
 
+/* syntaxhighlighter和bootstrap冲突解决 */
+.syntaxhighlighter td.code .container::before, .syntaxhighlighter td.code .container::after {
+    display: none;
+}
+
 /*
  * 评论
  */

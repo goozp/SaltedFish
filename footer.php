@@ -54,7 +54,15 @@
 
 
 <?php wp_footer(); ?>
-    <?php  if ( is_single() ) {?>
+<?php
+if ( is_home() ){ ?>
+    <script>
+        $('.carousel').carousel({
+            interval: 2000
+        });
+    </script>
+<?php }
+if ( is_single() ) { ?>
     <script type="text/javascript">
         hs.graphicsDir = <?php echo "'".get_template_directory_uri().'/public/highslide/graphics/'."'"; ?>;
         hs.align = 'center';
