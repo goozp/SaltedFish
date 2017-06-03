@@ -24,62 +24,82 @@ get_template_part( 'functions/sf-functions' );
 get_template_part( 'functions/sf-widget' );
 
 /*
- * 加载js,css文件
+ * 初始化加载js,css文件
+ * */
+function sf_init_scripts() {
+    /* 注册 */
+    // main css
+    wp_register_style( 'style', get_bloginfo( 'stylesheet_url' ), $deps = array(), SF_VERSION  );
+    // 导航菜单 css
+    wp_register_style( 'navi', get_template_directory_uri() . '/public/css/bootstrap-off-canvas-nav.css', array('style') );
+    // 顶部loading css
+    wp_register_style( 'pace', get_template_directory_uri() . '/public/css/pace-theme-flash.css' );
+    // 顶部loading js
+    wp_register_script( 'pace_js', sf_script( 'pace.min.js' ), null, SF_VERSION, false );
+    // JQuery js
+    wp_register_script( 'thejquery', sf_script( 'jquery.min.js' ), false, '1.11.3', false );
+    // bootstrap js
+    wp_register_script( 'bootstrap', get_template_directory_uri() . '/public/bootstrap/js/bootstrap.min.js', array( 'thejquery' ), '3.3.7', true );
+    // 导航菜单 js
+    wp_register_script( 'nav_js', sf_script( 'bootstrap-off-canvas-nav.js' ), array( 'bootstrap' ), SF_VERSION, true );
+    // lazyload.js
+    wp_register_script( 'lazyload', sf_script( 'jquery.lazyload.min.js' ), array( 'thejquery' ), '1.9.7', true );
+    // 主题js
+    wp_register_script( 'main_js', sf_script( 'main.js' ), array( 'bootstrap','lazyload' ), SF_VERSION, true );
+
+    /* 加载 */
+    if ( !is_admin() ) { /** Load Scripts and Style on Website Only */
+        wp_deregister_script( 'jquery' );
+        wp_enqueue_style('style');
+        wp_enqueue_style( 'navi' );
+        wp_enqueue_style( 'pace' );
+        wp_enqueue_script( 'thejquery' );
+        wp_enqueue_script( 'pace_js' );
+        wp_enqueue_script( 'bootstrap' );
+        wp_enqueue_script( 'nav_js' );
+        wp_enqueue_script( 'lazyload' );
+        wp_enqueue_script( 'main_js' );
+    }
+}
+add_action( 'init', 'sf_init_scripts' );
+
+/*
+ * 特定页面加载js,css文件
  * */
 function sf_scripts_with_jquery()
 {
-    // main css
-    wp_enqueue_style( 'style', get_bloginfo( 'stylesheet_url' ), $deps = array(), SF_VERSION  );
-    // 导航菜单 css
-    wp_register_style( 'navi', get_template_directory_uri() . '/public/css/bootstrap-off-canvas-nav.css' );
-    wp_enqueue_style( 'navi' );
-    // 顶部loading css
-    wp_register_style( 'pace', get_template_directory_uri() . '/public/css/pace-theme-flash.css' );
-    wp_enqueue_style( 'pace' );
+    /* 注册 */
+    wp_register_style( '404', get_template_directory_uri() . '/public/css/404.css' );
+    wp_register_style( 'highslide-css', get_template_directory_uri() . '/public/highslide/highslide.css', null, '5.0' );
+    wp_register_style( 'tree-css', get_template_directory_uri() . '/public/css/tree.css', null, SF_VERSION );
+    wp_register_style( 'collectLink', get_template_directory_uri() . '/public/css/collectLink.css', 'style', SF_VERSION  );
+    wp_register_style( 'archives', get_template_directory_uri() . '/public/css/archives.css', null, SF_VERSION  );
+    wp_register_script( 'highslide-js', get_template_directory_uri() . '/public/highslide/highslide-with-gallery.min.js', null, '5.0', true );
+    wp_register_script( 'tree-js', sf_script( 'tree.js' ), null, SF_VERSION, true );
+    wp_register_script( 'sf-archives', sf_script( 'archives.js' ), null, SF_VERSION, false );
+    /* 加载 */
     //404 css
     if ( is_404() ) {
-        wp_register_style( '404', get_template_directory_uri() . '/public/css/404.css' );
         wp_enqueue_style( '404' );
     }
-
-
-    // JQuery js
-    wp_deregister_script( 'jquery' );
-    wp_register_script( 'jquery', sf_script( 'jquery.min.js' ), false, '1.11.3' );
-    wp_enqueue_script( 'jquery' );
-    // 顶部loading js
-    wp_enqueue_script( 'pace_js', sf_script( 'pace.min.js' ), null, SF_VERSION, false );
-    // bootstrap js
-    wp_register_script( 'bootstrap', get_template_directory_uri() . '/public/bootstrap/js/bootstrap.min.js', array( 'jquery' ), '3.3.7', false );
-    wp_enqueue_script( 'bootstrap' );
-    // 导航菜单 js
-    wp_enqueue_script( 'nav_js', sf_script( 'bootstrap-off-canvas-nav.js' ), array( 'bootstrap' ), SF_VERSION, true );
-    // lazyload.js
-    wp_enqueue_script( 'lazyload', sf_script( 'jquery.lazyload.min.js' ), array( 'jquery' ), '1.9.7', true );
-    // 主题js
-    wp_enqueue_script( 'main_js', sf_script( 'main.js' ), null, SF_VERSION, true );
     // highslide
     if (is_single()){
-        wp_register_style( 'highslide-css', get_template_directory_uri() . '/public/highslide/highslide.css', null, '5.0' );
         wp_enqueue_style( 'highslide-css' );
-        wp_enqueue_script( 'highslide-js', get_template_directory_uri() . '/public/highslide/highslide-with-gallery.min.js', null, '5.0', true );
+        wp_enqueue_script( 'highslide-js' );
     }
     //博客历程(时间树模板)
     if( is_page_template( 'templates/treeTime.php' ) ){
-        wp_enqueue_script( 'sf-tree', sf_script( 'tree.js' ), null, SF_VERSION, false );
-        wp_register_style( 'tree', get_template_directory_uri() . '/public/css/tree.css', null, SF_VERSION );
-        wp_enqueue_style( 'tree' );
+        wp_enqueue_style( 'tree-css' );
+        wp_enqueue_script( 'tree-js' );
     }
     //归档模板页archives.js archives.css
     if( is_page_template( 'templates/archives.php' ) ){
-        wp_enqueue_script( 'sf-archives', sf_script( 'archives.js' ), null, SF_VERSION, false );
-        wp_register_style( 'archives', get_template_directory_uri() . '/public/css/archives.css', null, SF_VERSION  );
         wp_enqueue_style( 'archives' );
+        wp_enqueue_script( 'sf-archives' );
     }
     //链接收藏模板
     if( is_page_template( 'templates/collectLink.php' ) ) {
-        wp_register_style( 'archives', get_template_directory_uri() . '/public/css/collectLink.css', 'style', SF_VERSION  );
-        wp_enqueue_style( 'archives' );
+        wp_enqueue_style( 'collectLink' );
     }
 }
 add_action( 'wp_enqueue_scripts', 'sf_scripts_with_jquery' );
@@ -110,13 +130,6 @@ function jp_google_fonts( $translations, $text, $context, $domain ) {
     }
     return $translations;
 }
-
-/* 修改Gravatar服务器为cn.gravatar.com */
-function mytheme_get_avatar( $avatar ) {
-    $avatar = preg_replace( "/http:\/\/(www|\d).gravatar.com/","http://cn.gravatar.com",$avatar );
-    return $avatar;
-}
-add_filter( 'get_avatar', 'mytheme_get_avatar' );
 
 /**
  * 注册导航菜单

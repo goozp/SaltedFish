@@ -8,4 +8,8 @@ A wordpress Theme
 * 发送邮件：评论回复邮件提醒功能采用了PHPMailer，发送邮件的设置可在主题设置中进行设置。
 * 文章图片放大灯箱效果：采用了Highslide JS，版本5.0。
 
+<<<<<<< HEAD
 <img src="screenshot.png"/>
+=======
+<img src="screenshot.png"/>
+>>>>>>> master

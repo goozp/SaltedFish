@@ -61,11 +61,6 @@
                             </div>
                         </div>
                     </div>
-                    <script>
-                        $('.carousel').carousel({
-                            interval: 2000
-                        });
-                    </script>
                     <!-- Controls -->
                     <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
                         <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
