@@ -472,7 +472,8 @@ class SaltedFish_setting {
             <div class="to-do">
                 <h3>待完善</h3>
                 <ol>
-                    <li> </li>
+                    <li>首页css background图片首次加载滞后,体验不好</li>
+                    <li>顶部菜单在下拉整个页面的时候偶尔会有一点移动</li>
                 </ol>
             </div>
             <div class="feature-section">
