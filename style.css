@@ -97,7 +97,7 @@ blockquote p{
     height: 50px;
     left: 0;
     right: 0;
-    z-index: 99999;
+    z-index: 999;
     margin: 0;
 }
 .admin_login_nav{
@@ -330,7 +330,7 @@ blockquote p{
     border-bottom: 1px solid #ecf0f1;
 }
 .sf_post_list:hover{
-    z-index:9999;
+    z-index:99;
     border: 1px solid #dddddd;
     -webkit-box-shadow: 0 7px 14px rgba(0, 0, 0, 0.25), 0 5px 5px rgba(0, 0, 0, 0.22);
     -moz-box-shadow: 0 7px 14px rgba(0, 0, 0, 0.25), 0 5px 5px rgba(0, 0, 0, 0.22);
