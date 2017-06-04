@@ -72,7 +72,7 @@
                                     </li>
                                     <li class="inline-li">
                                         <i class="fa fa-eye"></i>
-                                        <?php get_post_views($post->ID); ?> 阅读
+                                        <?php echo sf_views(); ?> 阅读
                                     </li>
                                     <li class="inline-li">
                                         <i class="fa fa-comments-o"></i>
