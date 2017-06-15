@@ -92,6 +92,11 @@
                                         placeholder="http://yourwebsite.com" aria-describedby="sizing-addon2"
                                         value="<?php echo $comment_author_url; ?>">
                             </div>
+                            <div class="col-xs-12 col-sm-6 input-group sf_comments_col captchaDiv">
+                                <div class="form-control" id="wait" class="show">正在加载验证码......</div>
+                                <div id="embed-captcha"></div>
+                                <p id="notice" class="hide" style="color: #e74c3c; margin: 5px">请先完成验证</p>
+                            </div>
                         </div>
                     </div>
                     <?php endif; ?>
@@ -127,7 +132,6 @@
                     </div>
 
                     <div class="col-xs-12 col-sm-12 sf_comments_col">
-
                         <textarea class="form-control" name="comment" id="comment" rows="4" tabindex="4" placeholder="输入评论内容..."
                           onkeydown="if(event.ctrlKey&&event.keyCode==13){document.getElementById('submit').click();return false};"></textarea>
                     </div>
@@ -140,7 +144,7 @@
                             </label>
                         </div>
                         <div class="col-xs-12 col-sm-2 cancel-comment-reply reply-button"><?php cancel_comment_reply_link('点击取消回复') ?></div>
-                        <div class="col-xs-12 col-sm-2 reply-button"><input class="btn btn-primary" id="submit" type="submit" name="submit" value="提交 / Ctrl+Enter" /></div>
+                        <div class="col-xs-12 col-sm-2 reply-button"><input class="btn btn-primary" id="submit" type="submit" name="submit" value="提交 / Ctrl+Enter" disabled="disabled"/></div>
                     </div>
 
                     <?php comment_id_fields(); ?>
@@ -152,7 +156,41 @@
         <?php endif; ?>
     </div>
 </div>
-
+<script src="/wp-content/themes/SaltedFish/public/js/gt.js"></script>
+<script>
+    var handlerEmbed = function (captchaObj) {
+        $("#submit").click(function (e) {
+            var validate = captchaObj.getValidate();
+            if (!validate) {
+                $("#notice")[0].className = "show";
+                setTimeout(function () {
+                    $("#notice")[0].className = "hide";
+                }, 5000);
+                e.preventDefault();
+            }
+        });
+        captchaObj.appendTo("#embed-captcha");
+        captchaObj.onReady(function () {
+            $("#wait")[0].className = "hide";
+            $("#submit").attr("disabled", false);
+        });
+    };
+    $.ajax({
+        url: "/wp-content/themes/SaltedFish/libraries/GEETEST/web/StartCaptchaServlet.php?t=" + (new Date()).getTime(), // 加随机数防止缓存
+        type: "get",
+        dataType: "json",
+        success: function (data) {
+            initGeetest({
+                gt: data.gt,
+                challenge: data.challenge,
+                new_captcha: data.new_captcha,
+                product: "float",
+                offline: !data.success,
+                width: '100%'
+            }, handlerEmbed);
+        }
+    });
+</script>
 <script type="text/javascript" language="javascript">
     var addComment={moveForm:function(a,b,c,d){var e,f=this,g=f.I(a),h=f.I(c),i=f.I("cancel-comment-reply-link"),j=f.I("comment_parent"),k=f.I("comment_post_ID");if(g&&h&&i&&j){f.respondId=c,d=d||!1,f.I("wp-temp-form-div")||(e=document.createElement("div"),e.id="wp-temp-form-div",e.style.display="none",h.parentNode.insertBefore(e,h)),g.parentNode.insertBefore(h,g.nextSibling),$('body,html').animate( { scrollTop: $('#respond').offset().top - 150 }, 400);k&&d&&(k.value=d),j.value=b,i.style.display="",i.onclick=function(){var a=addComment,b=a.I("wp-temp-form-div"),c=a.I(a.respondId);if(b&&c)return a.I("comment_parent").value="0",b.parentNode.insertBefore(c,b),b.parentNode.removeChild(b),this.style.display="none",this.onclick=null,!1};try{f.I("comment").focus()}catch(l){}return!1}},I:function(a){return document.getElementById(a)}};
     function grin(tag) {

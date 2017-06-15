@@ -750,6 +750,7 @@ body.full-content .post-body h4, .post-content h4 {
     width: 10px;
 }
 .showSmile{
+    z-index: 99;
     float: right;
     color: #7f8c8d;
     cursor: pointer;
@@ -761,7 +762,11 @@ body.full-content .post-body h4, .post-content h4 {
     cursor: pointer;
 }
 .showSmileDiv{
+    z-index: 9;
     margin-bottom: 2px;
+}
+.captchaDiv{
+    z-index: 99;
 }
 /* 专题页样式 */
 .sf_subject_post_body h2{
