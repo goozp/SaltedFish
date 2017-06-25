@@ -140,7 +140,7 @@
                                                     <h2>
                                                         <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a>
                                                         <?php if ( is_sticky() ) { ?>
-                                                            <span class="post-sticky label label-danger"><?php _e( 'Stick', SF_NAME ); ?></span>
+                                                            <span class="post-sticky label label-danger">置顶</span>
                                                         <?php } ?>
                                                     </h2>
                                                 </div>
