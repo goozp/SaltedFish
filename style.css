@@ -534,6 +534,10 @@ body.full-content .post-body h4, .post-content h4 {
     border-top: solid 1px #ecf0f1;
     padding-top: 20px;
 }
+.post-sticky{
+    font-size: 14px;
+    padding: 3px;
+}
 .thumbs_button{
     width:125px;
     text-align: center;
